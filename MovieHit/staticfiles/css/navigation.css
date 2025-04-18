@@ -1,0 +1,35 @@
+.panel {
+    width: 100%;
+    background-color: #1f1f1f;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.panel nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.panel nav ul li {
+    margin: 0;
+}
+
+.panel nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.panel nav ul li a:hover {
+    background-color: #444;
+    color: #f0f0f0;
+}

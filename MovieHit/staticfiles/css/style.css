@@ -2,49 +2,61 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #1c1c1c;
+    color: #fff;
 }
 
 header {
-    background-color: #333;
-    color: white;
+    background-color: #000;
     padding: 1rem;
     text-align: center;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.panel {
+    width: 20%;
+    background-color: #2c2c2c;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.panel nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.panel nav ul li {
+    margin: 1rem 0;
+}
+
+.panel nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.content {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
 }
 
 .search-bar {
-    margin: 1rem auto;
-    text-align: center;
+    margin-bottom: 2rem;
 }
-
-    .search-bar input {
-        padding: 0.5rem;
-        width: 50%;
-        max-width: 400px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
-    padding: 1rem;
 }
 
 .movie-card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    background-color: #333;
     padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
-
-    .movie-card h3 {
-        margin: 0 0 0.5rem;
-    }
-
-    .movie-card p {
-        margin: 0.5rem 0;
-        color: #555;
-    }

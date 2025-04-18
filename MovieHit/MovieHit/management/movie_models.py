@@ -45,15 +45,3 @@ class Movies:
         # Write back to the file
         with open(full_path, "w") as file:
             json.dump(movies_data, file, indent=4)
-
-# Example usage
-if __name__ == "__main__":
-    new_movie = Movies(
-        name="Avatar",
-        director="James Cameron",
-        rating=7.8,
-        genres=["Sci-Fi", "Adventure", "Fantasy"],
-        length_in_minutes=162
-    )
-    Movies.add_movie_to_json(new_movie)
-    print(f"Added movie: {new_movie}")

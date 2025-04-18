@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
-    <Compile Include="management\movie_models.py">
+    <Compile Include="MovieHit\management\movie_models.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MovieHit\views.py">
@@ -46,8 +46,17 @@
     <Content Include="data\movies.json">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="deploy.bat">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="deploy.sh">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="requirements.txt" />
-    <Content Include="static\css\style.css">
+    <Content Include="static\css\content.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\css\navigation.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\index.html">
@@ -56,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MovieHit\" />
-    <Folder Include="management\" />
+    <Folder Include="MovieHit\management\" />
     <Folder Include="data\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />

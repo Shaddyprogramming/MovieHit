@@ -11,10 +11,13 @@ import sys
 
 from django.core.management import call_command
 
-try:
-    call_command('collectstatic', interactive=False, clear=True)
-except Exception as e:
-    print(f"Error during collectstatic: {e}")
+import subprocess
+
+import platform
+
+if platform.system() != "Windows":
+    subprocess.run(["chmod", "+x", "deploy.sh"], check=True)
+
 
 
 if __name__ == '__main__':
@@ -22,6 +25,7 @@ if __name__ == '__main__':
 
     try:
         from django.core.management import execute_from_command_line, call_command
+        # Automatically run collectstatic when starting the server
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
@@ -29,6 +33,5 @@ if __name__ == '__main__':
             "forget to activate a virtual environment?"
         ) from exc
 
-    # Automatically collect static files
-
     execute_from_command_line(sys.argv)
+
