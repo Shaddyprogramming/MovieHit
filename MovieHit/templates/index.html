@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Library</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <header>
+        <h1>Movie Library</h1>
+    </header>
+    <div class="search-bar">
+        <input type="text" placeholder="Search for a movie...">
+    </div>
+    <div class="movie-grid">
+        <div class="movie-card">
+            <h3>Inception</h3>
+            <p><strong>Genre:</strong> Sci-Fi</p>
+            <p>A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.</p>
+        </div>
+        <div class="movie-card">
+            <h3>The Dark Knight</h3>
+            <p><strong>Genre:</strong> Action</p>
+            <p>When the menace known as the Joker emerges, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+        </div>
+        <div class="movie-card">
+            <h3>Interstellar</h3>
+            <p><strong>Genre:</strong> Adventure</p>
+            <p>A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.</p>
+        </div>
+    </div>
+</body>
+</html>

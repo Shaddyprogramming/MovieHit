@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
+    <Compile Include="MovieHit\views.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MovieHit\__init__.py" />
     <Compile Include="MovieHit\settings.py" />
     <Compile Include="MovieHit\urls.py" />
@@ -38,9 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="static\css\style.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\index.html">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MovieHit\" />
+    <Folder Include="static\" />
+    <Folder Include="static\css\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>
