@@ -31,6 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
+    <Compile Include="management\movie_models.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MovieHit\views.py">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
     <Compile Include="MovieHit\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data\movies.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="requirements.txt" />
     <Content Include="static\css\style.css">
       <SubType>Code</SubType>
@@ -50,6 +56,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MovieHit\" />
+    <Folder Include="management\" />
+    <Folder Include="data\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
     <Folder Include="templates\" />

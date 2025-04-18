@@ -26,5 +26,6 @@ from . import views  # Import your views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index_page, name='index'),  # Map the root URL to the index page
+    path('', views.index, name='index'),  # Use the correct function name
 ]
+

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Inception",
+    "director": "Christopher Nolan",
+    "rating": 8.8,
+    "genres": [ "Sci-Fi", "Action", "Thriller" ],
+    "length_in_minutes": 148
+  },
+  {
+    "name": "The Shawshank Redemption",
+    "director": "Frank Darabont",
+    "rating": 9.3,
+    "genres": [ "Drama", "Crime" ],
+    "length_in_minutes": 142
+  },
+  {
+    "name": "The Dark Knight",
+    "director": "Christopher Nolan",
+    "rating": 9.0,
+    "genres": [ "Action", "Crime", "Drama" ],
+    "length_in_minutes": 152
+  },
+  {
+    "name": "Pulp Fiction",
+    "director": "Quentin Tarantino",
+    "rating": 8.9,
+    "genres": [ "Crime", "Drama" ],
+    "length_in_minutes": 154
+  },
+  {
+    "name": "The Godfather",
+    "director": "Francis Ford Coppola",
+    "rating": 9.2,
+    "genres": [ "Crime", "Drama" ],
+    "length_in_minutes": 175
+  },
+  {
+    "name": "The Matrix",
+    "director": "The Wachowskis",
+    "rating": 8.7,
+    "genres": [ "Sci-Fi", "Action" ],
+    "length_in_minutes": 136
+  },
+  {
+    "name": "Forrest Gump",
+    "director": "Robert Zemeckis",
+    "rating": 8.8,
+    "genres": [ "Drama", "Romance" ],
+    "length_in_minutes": 142
+  },
+  {
+    "name": "Fight Club",
+    "director": "David Fincher",
+    "rating": 8.8,
+    "genres": [ "Drama" ],
+    "length_in_minutes": 139
+  },
+  {
+    "name": "Interstellar",
+    "director": "Christopher Nolan",
+    "rating": 8.6,
+    "genres": [ "Sci-Fi", "Adventure", "Drama" ],
+    "length_in_minutes": 169
+  },
+  {
+    "name": "The Lord of the Rings: The Fellowship of the Ring",
+    "director": "Peter Jackson",
+    "rating": 8.8,
+    "genres": [ "Adventure", "Drama", "Fantasy" ],
+    "length_in_minutes": 178
+  }
+]

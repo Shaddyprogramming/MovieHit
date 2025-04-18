@@ -9,17 +9,26 @@ Command-line utility for administrative tasks.
 import os
 import sys
 
+from django.core.management import call_command
+
+try:
+    call_command('collectstatic', interactive=False, clear=True)
+except Exception as e:
+    print(f"Error during collectstatic: {e}")
+
+
 if __name__ == '__main__':
-    os.environ.setdefault(
-        'DJANGO_SETTINGS_MODULE',
-        'Proiect.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MovieHit.settings')
 
     try:
-        from django.core.management import execute_from_command_line
+        from django.core.management import execute_from_command_line, call_command
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+
+    # Automatically collect static files
+
     execute_from_command_line(sys.argv)
