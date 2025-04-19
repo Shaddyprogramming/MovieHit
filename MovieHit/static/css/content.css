@@ -45,6 +45,33 @@ header {
     text-align: center;
 }
 
+<<<<<<< HEAD
+.search-bar input {
+    width: 80%;
+    max-width: 600px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.search-bar button {
+    margin-left: 1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #666;
+}
+=======
     .search-bar input {
         width: 80%;
         max-width: 600px;
@@ -70,6 +97,7 @@ header {
         .search-bar button:hover {
             background-color: #666;
         }
+>>>>>>> d1dcff4e319674bef1655a378b145952dd2278cd
 
 .movie-grid {
     display: grid;
@@ -90,6 +118,19 @@ header {
     height: 400px;
 }
 
+<<<<<<< HEAD
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+.movie-card h3 {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    text-align: center;
+}
+=======
     .movie-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
@@ -108,3 +149,4 @@ header {
         color: #f0f0f0;
         text-align: center !important;
     }
+>>>>>>> d1dcff4e319674bef1655a378b145952dd2278cd
