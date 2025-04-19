@@ -73,8 +73,8 @@ header {
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 1.5rem; /* Space between cards */
     width: 100%;
     max-width: 1200px;
     text-align: justify;
@@ -85,9 +85,9 @@ header {
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    text-align: justify;
+    text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 400px;
+    height: 400px; /* Fixed height for each card */
 }
 
 .movie-card:hover {
@@ -100,4 +100,33 @@ header {
     font-size: 1.5rem;
     color: #f0f0f0;
     text-align: center;
+}
+
+.movie-card p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #ccc;
+    text-align: left;
+}
+
+.movie-year,
+.movie-length,
+.movie-rating,
+.movie-genres,
+.movie-age,
+.movie-directors,
+.movie-writers,
+.movie-actors {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #ccc;
+    text-align: left; /* Default alignment for all attributes */
+}
+
+.movie-writers {
+    text-align: justify; /* Justify only the writers line */
+}
+
+.movie-genres {
+    text-align: justify; /* Justify only the genres line */
 }
