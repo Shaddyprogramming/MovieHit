@@ -10,43 +10,40 @@
     <link rel="stylesheet" href="{% static 'css/content.css' %}">
 </head>
 <body>
-    <header>
-        <h1>MovieHit</h1>
-    </header>
-    <div class="container">
-        <!-- Centered Navigation Panel -->
-        <aside class="panel">
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Popular</a></li>
-                    <li><a href="#">Genres</a></li>
-                    <li><a href="#">Top Rated</a></li>
-                </ul>
-            </nav>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="content">
+    <aside class="panel">
+        <nav>
+            <div class="nav-left">
+                <a href="#">Home</a>
+                <a href="#">Top Rated</a>
+            </div>
             <div class="search-bar">
-                <input type="text" placeholder="Search for a movie...">
+                <form method="GET" action="{% url 'index' %}">
+                    <input type="text" name="q" placeholder="Search for a movie..." value="{{ query }}">
+                    <button type="submit">Search</button>
+                </form>
             </div>
-            <div class="movie-grid">
-                {% for movie in movies %}
-                <div class="movie-card">
-                    <h3>{{ movie.name }}</h3>
-                    <p><strong>Year:</strong> {{ movie.year }}</p>
-                    <p><strong>Length:</strong> {{ movie.length }}</p>
-                    <p><strong>Rating:</strong> {{ movie.rating }}</p>
-                    <p><strong>Genres:</strong> {{ movie.genres|join:", " }}</p>
-                    <p><strong>Age:</strong> {{ movie.age }}</p>
-                    <p><strong>Directors:</strong> {{ movie.directors|join:", " }}</p>
-                    <p><strong>Writers:</strong> {{ movie.writers|join:", " }}</p>
-                    <p><strong>Actors:</strong> {{ movie.actors|join:", " }}</p>
-                </div>
-                {% endfor %}
+        </nav>
+    </aside>
+
+
+
+    <!-- Main Content -->
+    <main class="content">
+        <div class="movie-grid">
+            {% for movie in movies %}
+            <div class="movie-card">
+                <h3>{{ movie.name }}</h3>
+                <p><strong>Year:</strong> {{ movie.year }}</p>
+                <p><strong>Length:</strong> {{ movie.length }}</p>
+                <p><strong>Rating:</strong> {{ movie.rating }}</p>
+                <p><strong>Genres:</strong> {{ movie.genres|join:", " }}</p>
+                <p><strong>Age:</strong> {{ movie.age }}</p>
+                <p><strong>Directors:</strong> {{ movie.directors|join:", " }}</p>
+                <p><strong>Writers:</strong> {{ movie.writers|join:", " }}</p>
+                <p><strong>Actors:</strong> {{ movie.actors|join:", " }}</p>
             </div>
-        </main>
-    </div>
+            {% endfor %}
+        </div>
+    </main>
 </body>
 </html>

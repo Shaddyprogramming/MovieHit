@@ -1,35 +1,84 @@
+/* Panel styling */
 .panel {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: #1f1f1f;
-    padding: 1rem 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-}
-
-.panel nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.panel nav ul li {
-    margin: 0;
-}
-
-.panel nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: bold;
+    height: auto;
+    background-color: #1c1c1c;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: flex-start; /* Aligns all content to the left */
+    flex-wrap: nowrap; /* Prevents wrapping to new lines */
+    z-index: 1000;
 }
 
-.panel nav ul li a:hover {
-    background-color: #444;
-    color: #f0f0f0;
+    .panel nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Aligns nav content to the left */
+        width: 100%; /* Ensures the nav spans the full width of the panel */
+    }
+
+/* Navigation links styling */
+.nav-left {
+    display: flex;
+    gap: 1.5rem;
+    flex-shrink: 0; /* Prevents shrinking of navigation links */
+    margin-right: 2rem; /* Adds spacing between nav links and the search bar */
 }
+
+    .nav-left a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+        .nav-left a:hover {
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+/* Search bar styling */
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-grow: 0; /* Prevents the search bar from growing */
+    max-width: 400px; /* Limits the maximum width of the search bar */
+    min-width: 400px; /* Ensures the search bar doesn't shrink too much */
+    margin-left: 15rem; /* Removes any additional left margin */
+}
+
+    .search-bar form {
+        display: flex;
+        width: 100%;
+    }
+
+    .search-bar input {
+        flex: 1;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-bar button {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #444;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .search-bar button:hover {
+            background-color: #666;
+        }
