@@ -35,10 +35,14 @@
                 {% for movie in movies %}
                 <div class="movie-card">
                     <h3>{{ movie.name }}</h3>
-                    <p><strong>Director:</strong> {{ movie.director }}</p>
+                    <p><strong>Year:</strong> {{ movie.year }}</p>
+                    <p><strong>Length:</strong> {{ movie.length }}</p>
                     <p><strong>Rating:</strong> {{ movie.rating }}</p>
                     <p><strong>Genres:</strong> {{ movie.genres|join:", " }}</p>
-                    <p><strong>Length:</strong> {{ movie.length_in_minutes }} minutes</p>
+                    <p><strong>Age:</strong> {{ movie.age }}</p>
+                    <p><strong>Directors:</strong> {{ movie.directors|join:", " }}</p>
+                    <p><strong>Writers:</strong> {{ movie.writers|join:", " }}</p>
+                    <p><strong>Actors:</strong> {{ movie.actors|join:", " }}</p>
                 </div>
                 {% endfor %}
             </div>

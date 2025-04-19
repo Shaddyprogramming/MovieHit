@@ -2,29 +2,38 @@ import json
 import os
 
 class Movies:
-    def __init__(self, name: str, director: str, rating: float, genres: list[str], length_in_minutes: int):
+    def __init__(self, name: str, year: int, length: int, rating: float, genres: list[str], age: str, directors: list[str], writers: list[str], actors: list[str]) :
         if len(genres) > 5:
             raise ValueError("A movie can have a maximum of 5 genres.")
+        if len(directors) > 5:
+            raise ValueError("A movie can have a maximum of 5 directors.")
+        if len(writers) > 5:
+            raise ValueError("A movie can have a maximum of 5 writers.")
+        if len(actors) > 5:
+            raise ValueError("A movie can have a maximum of 5 actors.")
         
         self.name = name
-        self.director = director
+        self.year=year
+        self.length = length
         self.rating = rating
         self.genres = genres
-        self.length_in_minutes = length_in_minutes
-
-    def __str__(self):
-        return (f"Movie: {self.name}, Directed by: {self.director}, "
-                f"Rating: {self.rating}, Genres: {', '.join(self.genres)}, "
-                f"Length: {self.length_in_minutes} minutes")
+        self.age=age
+        self.directors = directors
+        self.writers=writers
+        self.actors=actors   
 
     def to_dict(self):
         """Convert the movie object to a dictionary."""
         return {
             "name": self.name,
-            "director": self.director,
+            "year": self.year,
+            "length": self.length,
             "rating": self.rating,
             "genres": self.genres,
-            "length_in_minutes": self.length_in_minutes
+            "age": self.age,
+            "directors": self.directors,
+            "writers": self.writers,
+            "actors": self.actors,
         }
 
     @staticmethod
