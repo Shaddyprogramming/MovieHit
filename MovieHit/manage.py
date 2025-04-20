@@ -15,11 +15,6 @@ import subprocess
 
 import platform
 
-if platform.system() != "Windows":
-    subprocess.run(["chmod", "+x", "deploy.sh"], check=True)
-
-
-
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MovieHit.settings')
 

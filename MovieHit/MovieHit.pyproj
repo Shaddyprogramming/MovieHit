@@ -3,7 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>MovieHit</Name>
     <RootNamespace>MovieHit</RootNamespace>
-    <InterpreterId>MSBuild|venv|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,7 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="manage.py" />
-    <Compile Include="MovieHit\management\movie_models.py">
+    <Compile Include="MovieHit\admin.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MovieHit\management\movies.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MovieHit\migrations\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MovieHit\views.py">
@@ -43,13 +49,10 @@
     <Compile Include="MovieHit\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data\movies.json">
+    <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
     <Content Include="update.bat">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="deploy.sh">
       <SubType>Code</SubType>
     </Content>
     <Content Include="requirements.txt" />
@@ -66,7 +69,7 @@
   <ItemGroup>
     <Folder Include="MovieHit\" />
     <Folder Include="MovieHit\management\" />
-    <Folder Include="data\" />
+    <Folder Include="MovieHit\migrations\" />
     <Folder Include="static\" />
     <Folder Include="static\css\" />
     <Folder Include="templates\" />
