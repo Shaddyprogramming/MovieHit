@@ -4,63 +4,60 @@ body {
     padding: 0;
     background-color: #121212;
     color: #fff;
-    text-align: justify;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    text-align: justify;
-    width: 100%;
-    margin: 0 auto;
 }
 
 .content {
-    width: 100%;
-    max-width: 1200px;
     padding: 2rem;
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    text-align: justify;
+    margin-top: 5rem; /* To account for the fixed header */
 }
 
 .movie-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
-    gap: 1.5rem; /* Space between cards */
-    width: 100%;
-    max-width: 1200px;
-    text-align: justify;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    justify-content: center;
 }
 
 .movie-card {
-    background-color: #333;
+    background-color: #1c1c1c;
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 400px; /* Fixed height for each card */
+    margin: 0 auto; /* Centers the card horizontally */
+    overflow: hidden; /* Ensures content that exceeds the height is hidden */
+    display: flex; /* Ensures content inside the card is aligned properly */
+    flex-direction: column; /* Stacks content vertically */
+    justify-content: space-between; /* Distributes content evenly */
 }
 
-    .movie-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-    }
+/* Ensure movie-title and movie-details do not exceed the card height */
+.movie-title {
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+    color: #f0f0f0;
+    text-align: center;
+    flex-shrink: 0; /* Prevents the title from shrinking */
+}
 
-    .movie-card h3 {
-        margin: 0 0 1rem;
-        font-size: 1.5rem;
-        color: #f0f0f0;
-        text-align: center;
-    }
+.movie-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #ccc;
+    overflow: auto; /* Allows scrolling if content exceeds the available space */
+    flex-grow: 1; /* Ensures the details take up remaining space */
+    max-height: calc(500px - 4rem); /* Restricts the height of details to fit within the card */
+}
 
-    .movie-card p {
+    .movie-details li {
         margin: 0.5rem 0;
-        font-size: 1rem;
-        color: #ccc;
-        text-align: left;
     }
+
+/* Hover effect */
+.movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+

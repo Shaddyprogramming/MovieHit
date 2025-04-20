@@ -1,6 +1,7 @@
 /* Panel styling */
+/* Panel styling */
 .panel {
-    position: fixed;
+    position: fixed; /* Ensures the panel stays fixed at the top */
     top: 0;
     left: 0;
     width: 100%;
@@ -10,10 +11,11 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center; /* Ensures vertical alignment */
-    justify-content: flex-start; /* Aligns all content to the left */
+    justify-content: flex-start; /* Aligns nav links to the left */
     flex-wrap: nowrap; /* Prevents wrapping to new lines */
-    z-index: 1000;
+    z-index: 1000; /* Ensures the panel stays above other elements */
 }
+
 
     .panel nav {
         display: flex;
@@ -27,7 +29,6 @@
     display: flex;
     gap: 1.5rem;
     flex-shrink: 0; /* Prevents shrinking of navigation links */
-    margin-right: 2rem; /* Adds spacing between nav links and the search bar */
 }
 
     .nav-left a {
@@ -44,14 +45,20 @@
         }
 
 /* Search bar styling */
+/* Search bar styling */
+/* Search bar styling */
 .search-bar {
+    position: absolute; /* Allows independent positioning */
+    left: 50%; /* Centers horizontally relative to the panel */
+    transform: translateX(-50%); /* Adjusts for the width of the search bar */
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    flex-grow: 0; /* Prevents the search bar from growing */
     max-width: 400px; /* Limits the maximum width of the search bar */
     min-width: 400px; /* Ensures the search bar doesn't shrink too much */
-    margin-left: 15rem; /* Removes any additional left margin */
+    border: 1px solid #555; /* Adds a unified border around the entire search bar */
+    border-radius: 5px; /* Rounds the corners of the entire search bar */
+    overflow: hidden; /* Ensures the button and input fit neatly inside */
+    background-color: #333; /* Matches the panel background for a cohesive look */
 }
 
     .search-bar form {
@@ -61,24 +68,39 @@
 
     .search-bar input {
         flex: 1;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
         font-size: 1rem;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border: none; /* Removes the individual border */
+        outline: none; /* Removes the default focus outline */
+        background-color: transparent; /* Matches the search bar background */
+        color: #fff; /* Ensures text is visible */
     }
+
+        .search-bar input::placeholder {
+            color: #aaa; /* Subtle placeholder color */
+        }
 
     .search-bar button {
         padding: 0.5rem 1rem;
         font-size: 1rem;
-        border: none;
-        border-radius: 5px;
-        background-color: #444;
+        border: none; /* Removes the individual border */
+        background-color: #444; /* Matches the search bar background */
         color: #fff;
         cursor: pointer;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
         .search-bar button:hover {
-            background-color: #666;
+            background-color: #666; /* Slightly lighter background on hover */
+            color: #fff; /* Keeps the text color consistent */
         }
+
+    /* Add a hover effect for the entire search bar */
+    .search-bar:hover {
+        border-color: #777; /* Changes the border color on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+    }
+
+
+
+

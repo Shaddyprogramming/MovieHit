@@ -5,45 +5,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieHit · Home page</title>
+    <title>MovieHit · Home</title>
     <link rel="stylesheet" href="{% static 'css/navigation.css' %}">
     <link rel="stylesheet" href="{% static 'css/content.css' %}">
 </head>
 <body>
-    <aside class="panel">
+    <!-- Navigation Panel -->
+    <header class="panel">
         <nav>
             <div class="nav-left">
-                <a href="#">Home</a>
-                <a href="#">Top Rated</a>
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Top Rated</a>
             </div>
             <div class="search-bar">
                 <form method="GET" action="{% url 'index' %}">
-                    <input type="text" name="q" placeholder="Search for a movie..." value="{{ query }}">
-                    <button type="submit">Search</button>
+                    <input type="text" name="q" placeholder="Search for a movie..." value="{{ query }}" class="search-input">
+                    <button type="submit" class="search-button">Search</button>
                 </form>
             </div>
         </nav>
-    </aside>
-
-
+    </header>
 
     <!-- Main Content -->
     <main class="content">
-        <div class="movie-grid">
+        <section class="movie-grid">
             {% for movie in movies %}
-            <div class="movie-card">
-                <h3>{{ movie.name }}</h3>
-                <p><strong>Year:</strong> {{ movie.year }}</p>
-                <p><strong>Length:</strong> {{ movie.length }}</p>
-                <p><strong>Rating:</strong> {{ movie.rating }}</p>
-                <p><strong>Genres:</strong> {{ movie.genres|join:", " }}</p>
-                <p><strong>Age:</strong> {{ movie.age }}</p>
-                <p><strong>Directors:</strong> {{ movie.directors|join:", " }}</p>
-                <p><strong>Writers:</strong> {{ movie.writers|join:", " }}</p>
-                <p><strong>Actors:</strong> {{ movie.actors|join:", " }}</p>
-            </div>
+            <article class="movie-card">
+                <h3 class="movie-title">{{ movie.name }}</h3>
+                <ul class="movie-details">
+                    <li><strong>Year:</strong> {{ movie.year }}</li>
+                    <li><strong>Length:</strong> {{ movie.length }} mins</li>
+                    <li><strong>Rating:</strong> {{ movie.rating }}</li>
+                    <li><strong>Genres:</strong> {{ movie.genres|join:", " }}</li>
+                    <li><strong>Age:</strong> {{ movie.age }}</li>
+                    <li><strong>Directors:</strong> {{ movie.directors|join:", " }}</li>
+                    <li><strong>Writers:</strong> {{ movie.writers|join:", " }}</li>
+                    <li><strong>Actors:</strong> {{ movie.actors|join:", " }}</li>
+                </ul>
+            </article>
             {% endfor %}
-        </div>
+        </section>
     </main>
 </body>
 </html>
