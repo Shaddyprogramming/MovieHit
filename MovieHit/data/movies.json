@@ -117,5 +117,425 @@
         "directors": [ "Louis Leterrier" ],
         "writers": [ "Dan Mazeau", "Justin Lin", "Zach Dean" ],
         "actors": [ "Vin Diesel", "Michelle Rodriguez", "Jason Statham" ]
+    },
+
+    {
+        "name": "Mission: Dead Reckoning Part One",
+        "year": 2023,
+        "length": 163,
+        "rating": 7.6,
+        "genres": [ "Action", "Adventure", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Christopher McQuarrie" ],
+        "writers": [ "Bruce Geller", "Christopher McQuarrie", "Erik Jendresen" ],
+        "actors": [ "Tom Cruise", "Hayley Atwell", "Ving Rhames" ]
+    },
+
+    {
+        "name": "John Wick: Chapter 4",
+        "year": 2023,
+        "length": 169,
+        "rating": 7.6,
+        "genres": [ "Action", "Crime", "Thriller" ],
+        "age": "R",
+        "directors": [ "Chad Stahelski" ],
+        "writers": [ "Shay Hatten", "Michael Finch", "Derek Kolstad" ],
+        "actors": [ "Keanu Reeves", "Laurence Fishburne", "George Georgiou" ]
+    },
+
+    {
+        "name": "Star Wars: Revenge of the Sith",
+        "year": 2005,
+        "length": 140,
+        "rating": 7.6,
+        "genres": [ "Space Sci-Fi", "Tragedy", "Action", "Adventure" ],
+        "age": "PG-13",
+        "directors": [ "George Lucas" ],
+        "writers": [ "George Lucas" ],
+        "actors": [ "Hayden Christensen", "Natalie Portmna", "Evan McGregor" ]
+    },
+
+    {
+        "name": "Kung Fu Panda",
+        "year": 2008,
+        "length": 92,
+        "rating": 7.6,
+        "genres": [ "Action", "Adventure", "Animation", "Comedy", "Family" ],
+        "age": "PG",
+        "directors": [ "Mark Osborne", "John Stevenson" ],
+        "writers": [ "Jonathan Aibel", "Glenn Berger", "Ethan Reiff" ],
+        "actors": [ "Jack Black", "Ian McShane", "Angelina Jolie" ]
+    },
+
+    {
+        "name": "Deadpool 2",
+        "year": 2018,
+        "length": 119,
+        "rating": 7.6,
+        "genres": [ "Action", "Adventure", "Comedy", "Sci-Fi" ],
+        "age": "R",
+        "directors": [ "David Leitch" ],
+        "writers": [ "Rhett Reese", "Paul Wernick", "Ryan Reynolds" ],
+        "actors": [ "Ryan Reynolds", "Josh Brolin", "Morena Baccarin" ]
+    },
+
+    {
+        "name": "Toy Story 4",
+        "year": 2019,
+        "length": 100,
+        "rating": 7.6,
+        "genres": [ "Adventure", "Animation", "Comedy", "Family", "Fantasy" ],
+        "age": "A.G",
+        "directors": [ "Josh Cooley" ],
+        "writers": [ "John Lasseter", "Andrew Stanton", "Josh Cooley" ],
+        "actors": [ "Tom Hanks", "Tim Allen", "Annie Potts" ]
+    },
+
+    {
+        "name": "The Nun",
+        "year": 2018,
+        "length": 96,
+        "rating": 5.4,
+        "genres": [ "Horror", "Mystery", "Thriller" ],
+        "age": "R",
+        "directors": [ "Corin Hardy" ],
+        "writers": [ "Gary Dauberman", "James Was" ],
+        "actors": [ "Demian Bichir", "Taissa Farmiga", "Jonas Bloquet" ]
+    },
+
+    {
+        "name": "Nope",
+        "year": 2022,
+        "length": 130,
+        "rating": 6.8,
+        "genres": [ "Horror", "Mystery", "Sci-Fi", "Thriller" ],
+        "age": "R",
+        "directors": [ "Jordan Peele" ],
+        "writers": [ "Jordan Peele" ],
+        "actors": [ "Daniel Kaluuya", "Keke Palmer", "Brandon Perea" ]
+    },
+
+    {
+        "name": "Annabelle",
+        "year": 2014,
+        "length": 93,
+        "rating": 5.5,
+        "genres": [ "Horror", "Mystery", "Thriller" ],
+        "age": "R",
+        "directors": [ "John R. Leonetti" ],
+        "writers": [ "Gary Dauberman" ],
+        "actors": [ "Ward Horton", "Annabelle Wallis", "Alfre Woodard" ]
+    },
+
+    {
+        "name": "Knives Out",
+        "year": 2019,
+        "length": 130,
+        "rating": 7.9,
+        "genres": [ "Comedy", "Crime", "Drama", "Mystery", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Rian Johnson" ],
+        "writers": [ "Rian Johnson" ],
+        "actors": [ "Daniel Craig", "Chris Evans", "Ana de Armas" ]
+    },
+
+    {
+        "name": "Glass Onion",
+        "year": 2022,
+        "length": 139,
+        "rating": 7.1,
+        "genres": [ "Comedy", "Crime", "Drama", "Mystery", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Rian Johnson" ],
+        "writers": [ "Rian Johnson" ],
+        "actors": [ "Daniel Craig", "Edward Norton", "Kate Hudson" ]
+    },
+
+    {
+        "name": "Split",
+        "year": 2016,
+        "length": 117,
+        "rating": 7.3,
+        "genres": [ "Horror", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "M. Night Shyamalan" ],
+        "writers": [ "M. Night Shyamalan" ],
+        "actors": [ "James McAvoy", "Anya Taylor-Joy", "Haley Lu Richardson" ]
+    },
+
+    {
+        "name": "Glass",
+        "year": 2019,
+        "length": 129,
+        "rating": 6.6,
+        "genres": [ "Drama", "Horror", "Sci-Fi", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "M. Night Shyamalan" ],
+        "writers": [ "M. Night Shyamalan" ],
+        "actors": [ "James McAvoy", "Bruce Willis", "Samuel L. Jackson" ]
+    },
+
+    {
+        "name": "The Maze Runner",
+        "year": 2014,
+        "length": 113,
+        "rating": 6.8,
+        "genres": [ "Action", "Mystery", "Sci-Fi", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Wes Ball" ],
+        "writers": [ "Noah Oppenheim", "Grant Pierce Myers", "T.S. Nowlin" ],
+        "actors": [ "Dylan O'Brien", "Kaya Scodelario", "Will Poulter" ]
+    },
+
+    {
+        "name": "Maze Runner: The Scorch Trials",
+        "year": 2015,
+        "length": 131,
+        "rating": 6.3,
+        "genres": [ "Action", "Adventure", "Sci-Fi", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Wes Ball" ],
+        "writers": [ "T.S. Nowlin", "James Dashner" ],
+        "actors": [ "Dylan O'Brien", "Kaya Scodelario", "Thomas Brodie-Sangster" ]
+    },
+
+    {
+        "name": "Maze Runner: The Death Cure",
+        "year": 2018,
+        "length": 143,
+        "rating": 6.3,
+        "genres": [ "Action", "Adventure", "Sci-Fi", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Wes Ball" ],
+        "writers": [ "T.S. Nowlin", "James Dashner" ],
+        "actors": [ "Dylan O'Brien", "Ki Hong Lee", "Kaya Scodelario" ]
+    },
+
+    {
+        "name": "Rush Hour",
+        "year": 1998,
+        "length": 98,
+        "rating": 7.0,
+        "genres": [ "Action", "Comedy", "Crime", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Brett Ratner" ],
+        "writers": [ "Ross LaManna", "Jim Kouf" ],
+        "actors": [ "Jackie Chan", "Chris Tucker", "Ken Leung" ]
+    },
+
+    {
+        "name": "Rush Hour 2",
+        "year": 2001,
+        "length": 90,
+        "rating": 6.7,
+        "genres": [ "Action", "Comedy", "Crime", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Brett Ratner" ],
+        "writers": [ "Ross LaManna", "Jeff Nathanson" ],
+        "actors": [ "Jackie Chan", "Chris Tucker", "John Lone" ]
+    },
+
+    {
+        "name": "Rush Hour 3",
+        "year": 2007,
+        "length": 91,
+        "rating": 6.2,
+        "genres": [ "Action", "Comedy", "Crime", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Brett Ratner" ],
+        "writers": [ "Jeff Nathanson", "Ross LaManna" ],
+        "actors": [ "Jackie Chan", "Chris Tucker", "Max von Sydow" ]
+    },
+
+    {
+        "name": "Justice League",
+        "year": 2017,
+        "length": 120,
+        "rating": 6.0,
+        "genres": [ "Action", "Adventure", "Fantasy", "Sci-Fi" ],
+        "age": "PG-13",
+        "directors": [ "Zack Snyder" ],
+        "writers": [ "Jerry Siegel", "Joe Shuster", "Chris Terrio" ],
+        "actors": [ "Ben Affleck", "Gal Gadot", "Jason Momoa" ]
+    },
+
+    {
+        "name": "Sonic the Hedgehog",
+        "year": 2020,
+        "length": 93,
+        "rating": 6.5,
+        "genres": [ "Action", "Adventure", "Comedy", "Family" ],
+        "age": "PG",
+        "directors": [ "Jeff Fowler" ],
+        "writers": [ "Pat Casey", "Josh Miller", "Yuji Naka" ],
+        "actors": [ "Ben Schwartz", "James Marsden", "Jim Carrey" ]
+    },
+
+    {
+        "name": "Sonic the Hedgehog 2",
+        "year": 2022,
+        "length": 122,
+        "rating": 6.5,
+        "genres": [ "Action", "Adventure", "Comedy", "Family", "Fantasy" ],
+        "age": "A.G.",
+        "directors": [ "Jeff Fowler" ],
+        "writers": [ "Pat Casey", "Josh Miller", "John Whittington" ],
+        "actors": [ "James Marsden", "Jim Carrey", "Ben Schwartz" ]
+    },
+
+    {
+        "name": "Sonic the Hedgehog 3",
+        "year": 2024,
+        "length": 110,
+        "rating": 6.9,
+        "genres": [ "Action", "Adventure", "Comedy", "Family", "Fantasy" ],
+        "age": "PG",
+        "directors": [ "Jeff Fowler" ],
+        "writers": [ "Pat Casey", "Josh Miller", "John Whittington" ],
+        "actors": [ "Jim Carrey", "Ben Schwartz", "Keanu Reeves" ]
+    },
+
+    {
+        "name": "Guardians of the Galaxy",
+        "year": 2014,
+        "length": 121,
+        "rating": 8.0,
+        "genres": [ "Action", "Adventure", "Comedy", "Sci-Fi" ],
+        "age": "PG-13",
+        "directors": [ "James Gunn" ],
+        "writers": [ "James Gunn", "Nicole Perlman", "Dan Abnett" ],
+        "actors": [ "Chris Pratt", "Vin Diesel", "Bradley Cooper" ]
+    },
+
+    {
+        "name": "Guardians of the Galaxy Vol. 2",
+        "year": 2017,
+        "length": 136,
+        "rating": 7.6,
+        "genres": [ "Action", "Adventure", "Comedy", "Sci-Fi" ],
+        "age": "PG-13",
+        "directors": [ "James Gunn" ],
+        "writers": [ "James Gunn", "Dan Abnett", "Andy Lanning" ],
+        "actors": [ "Chris Pratt", "Zoe Saldana", "Dave Bautista" ]
+    },
+
+    {
+        "name": "Guardians of the Galaxy Vol. 3",
+        "year": 2023,
+        "length": 150,
+        "rating": 7.9,
+        "genres": [ "Action", "Adventure", "Comedy", "Sci-Fi" ],
+        "age": "PG-13",
+        "directors": [ "James Gunn" ],
+        "writers": [ "James Gunn", "Jim Starlin", "Stan Lee" ],
+        "actors": [ "Chris Pratt", "Chukwudi Iwuji", "Bradley Cooper" ]
+    },
+
+    {
+        "name": "My Spy",
+        "year": 2020,
+        "length": 99,
+        "rating": 6.4,
+        "genres": [ "Action", "Comedy" ],
+        "age": "PG-13",
+        "directors": [ "Peter Segal" ],
+        "writers": [ "Erich Hoeber", "John Hoeber" ],
+        "actors": [ "Dave Bautista", "Chloe Coleman", "Parisa Fitz-Henley" ]
+    },
+
+    {
+        "name": "My Spy: The Eternal City",
+        "year": 2024,
+        "length": 112,
+        "rating": 5.7,
+        "genres": [ "Action", "Comedy" ],
+        "age": "PG-13",
+        "directors": [ "Peter Segal" ],
+        "writers": [ "Erich Hoeber", "John Hoeber", "Peter Segal" ],
+        "actors": [ "Dave Bautista", "Chloe Coleman", "Kristen Schaal" ]
+    },
+
+    {
+        "name": "Black Adam",
+        "year": 2022,
+        "length": 125,
+        "rating": 6.2,
+        "genres": [ "Action", "Adventure", "Fantasy", "Sci-Fi" ],
+        "age": "PG-13",
+        "directors": [ "Jaume Collet-Serra" ],
+        "writers": [ "Adam Sztykiel", "Rory Haines", "Sohrab Noshirvani" ],
+        "actors": [ "Dwayne Johnson", "Aldis Hodge", "Pierce Brosnan" ]
+    },
+
+    {
+        "name": "Eternals",
+        "year": 2021,
+        "length": 156,
+        "rating": 6.2,
+        "genres": [ "Action", "Adventure", "Fantasy", "Sci-Fi" ],
+        "age": "PG-13",
+        "directors": [ "Chloe Zhao" ],
+        "writers": [ "Chloe Zhao", "Patrick Burleigh", "Ryan Firpo" ],
+        "actors": [ "Gemma Chan", "Richard Madden", "Angelina Jolie" ]
+    },
+
+    {
+        "name": "Batman vs. Superman: Dawn of Justice",
+        "year": 2016,
+        "length": 151,
+        "rating": 6.5,
+        "genres": [ "Action", "Adventure", "Sci-Fi" ],
+        "age": "R",
+        "directors": [ "Zack Snyder" ],
+        "writers": [ "Bob Kane", "Bill Finger", "Jerry Siegel" ],
+        "actors": [ "Ben Affleck", "Henry Cavill", "Amy Adams" ]
+    },
+
+    {
+        "name": "Shazam!",
+        "year": 2019,
+        "length": 132,
+        "rating": 7.0,
+        "genres": [ "Action", "Adventure", "Comedy", "Fantasy" ],
+        "age": "PG-13",
+        "directors": [ "David F. Sandberg" ],
+        "writers": [ "Henry Gayden", "Darren Lemke", "Bill Parker" ],
+        "actors": [ "Zachary Levi", "Mark Strong", "Asher Angel" ]
+    },
+
+    {
+        "name": "Shazam! Fury of the Gods",
+        "year": 2023,
+        "length": 130,
+        "rating": 5.9,
+        "genres": [ "Action", "Adventure", "Comedy", "Fantasy", "Sci-Fi" ],
+        "age": "PG-13",
+        "directors": [ "David F. Sandberg" ],
+        "writers": [ "Henry Gayden", "Chris Morgan", "Bill Parker" ],
+        "actors": [ "Zachary Levi", "Asher Angel", "Jack Dylan Grazer" ]
+    },
+
+    {
+        "name": "Mrbius",
+        "year": 2022,
+        "length": 104,
+        "rating": 5.1,
+        "genres": [ "Action", "Adventure", "Horror", "Sci-Fi", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "Daniel Espinosa" ],
+        "writers": [ "Matt Sazama", "Burk Sharpless" ],
+        "actors": [ "Jared Leto", "Matt Smith", "Adria Arjona" ]
+    },
+
+    {
+        "name": "Madame Web",
+        "year": 2024,
+        "length": 116,
+        "rating": 4.0,
+        "genres": [ "Action", "Adventure", "Sci-Fi", "Thriller" ],
+        "age": "PG-13",
+        "directors": [ "S.J. Clarkson" ],
+        "writers": [ "Matt Sazama", "Burk Sharpless", "Claire Parker" ],
+        "actors": [ "Dakota Johnson", "Sydney Sweeney", "Isabela Merced" ]
     }
 ]
