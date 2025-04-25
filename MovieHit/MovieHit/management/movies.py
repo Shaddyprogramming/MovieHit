@@ -1,5 +1,6 @@
 from django.db import models
-
+from simple_history.models import HistoricalRecords
+  
 class Movies(models.Model):
     """
     Represents a movie with various attributes such as name, year, length, rating, genres, and more.
@@ -13,6 +14,7 @@ class Movies(models.Model):
     directors = models.JSONField(help_text="A list of directors of the movie.")  # Stores a list of directors
     writers = models.JSONField(help_text="A list of writers of the movie.")  # Stores a list of writers
     actors = models.JSONField(help_text="A list of actors in the movie.")  # Stores a list of actors
+    history = HistoricalRecords()  # Add this line to enable history tracking
 
     def __str__(self):
         """

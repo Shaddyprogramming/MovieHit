@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'MovieHit'
+    'MovieHit',
+    'simple_history',
 ]
 
 # Middleware framework
@@ -103,9 +104,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']  # Directory for static files during development
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Directory for collected static files during production
 
-# Media files (if needed)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'  # Directory for uploaded media files
+# Media files configuration
+MEDIA_URL = '/media/'  # URL to access media files
+MEDIA_ROOT = BASE_DIR / 'media'  # Directory to store media files
+
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
