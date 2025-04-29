@@ -1,0 +1,95 @@
+.panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: #1c1c1c;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    flex-wrap: nowrap;
+    z-index: 1000; 
+}
+
+
+.panel nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.nav-left {
+    display: flex;
+    gap: 1.5rem;
+    flex-shrink: 0;
+}
+
+.nav-left a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-left a:hover {
+    background-color: #333;
+    border-radius: 5px;
+}
+
+.search-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    min-width: 400px;
+    border: 1px solid #555;
+    border-radius: 5px; 
+    overflow: hidden;
+    background-color: #333;
+}
+
+.search-bar form {
+    display: flex;
+    width: 100%;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+.search-bar input::placeholder {
+    color: #aaa;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #666;
+    color: #fff;
+}
+
+.search-bar:hover {
+    border-color: #777;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
