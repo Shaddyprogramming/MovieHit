@@ -12,6 +12,8 @@ class Movies(models.Model):
     writers = models.JSONField(help_text="A list of writers of the movie.")
     actors = models.JSONField(help_text="A list of actors in the movie.")
     history = HistoricalRecords()
+
+
     #TODO 1
     # un model pentru numarul de comentarii
     #TODO 2

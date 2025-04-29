@@ -25,25 +25,16 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main class="content">
         <section class="movie-grid">
             {% for movie in movies %}
             <article class="movie-card">
-                <h3 class="movie-title">{{ movie.name }}</h3>
-                <ul class="movie-details">
-                    <li><strong>Year:</strong> {{ movie.year }}</li>
-                    <li><strong>Length:</strong> {{ movie.length }} mins</li>
-                    <li><strong>Rating:</strong> {{ movie.rating }}</li>
-                    <li><strong>Genres:</strong> {{ movie.genres|join:", " }}</li>
-                    <li><strong>Age:</strong> {{ movie.age }}</li>
-                    <li><strong>Directors:</strong> {{ movie.directors|join:", " }}</li>
-                    <li><strong>Writers:</strong> {{ movie.writers|join:", " }}</li>
-                    <li><strong>Actors:</strong> {{ movie.actors|join:", " }}</li>
-                </ul>
+                <img src="{% static 'images/movies/default.png' %}" alt="Movie Poster" class="movie-poster">
             </article>
             {% endfor %}
         </section>
     </main>
 </body>
 </html>
+
+

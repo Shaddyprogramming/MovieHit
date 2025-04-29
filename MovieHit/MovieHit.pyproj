@@ -54,13 +54,14 @@
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\images\movies\default.png" />
     <Content Include="update.bat">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="static\content.css">
+    <Content Include="static\styles\content.css">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="static\navigation.css">
+    <Content Include="static\styles\navigation.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\index.html">
@@ -75,6 +76,9 @@
     <Folder Include="media\" />
     <Folder Include="description\" />
     <Folder Include="static\" />
+    <Folder Include="static\images\" />
+    <Folder Include="static\images\movies\" />
+    <Folder Include="static\styles\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <ItemGroup>

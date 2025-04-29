@@ -8,7 +8,7 @@ body {
 
 .content {
     padding: 2rem;
-    margin-top: 5rem; /* To account for the fixed header */
+    margin-top: 5rem;
 }
 
 .movie-grid {
@@ -24,20 +24,19 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 auto; /* Centers the card horizontally */
-    overflow: hidden; /* Ensures content that exceeds the height is hidden */
-    display: flex; /* Ensures content inside the card is aligned properly */
-    flex-direction: column; /* Stacks content vertically */
-    justify-content: space-between; /* Distributes content evenly */
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-/* Ensure movie-title and movie-details do not exceed the card height */
 .movie-title {
     margin: 0 0 1rem;
     font-size: 1.5rem;
     color: #f0f0f0;
     text-align: center;
-    flex-shrink: 0; /* Prevents the title from shrinking */
+    flex-shrink: 0;
 }
 
 .movie-details {
@@ -46,16 +45,15 @@ body {
     margin: 0;
     font-size: 1rem;
     color: #ccc;
-    overflow: auto; /* Allows scrolling if content exceeds the available space */
-    flex-grow: 1; /* Ensures the details take up remaining space */
-    max-height: calc(500px - 4rem); /* Restricts the height of details to fit within the card */
+    overflow: auto;
+    flex-grow: 1;
+    max-height: calc(500px - 4rem);
 }
 
-    .movie-details li {
-        margin: 0.5rem 0;
-    }
+.movie-details li {
+    margin: 0.5rem 0;
+}
 
-/* Hover effect */
 .movie-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
