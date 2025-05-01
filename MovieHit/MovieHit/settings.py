@@ -18,9 +18,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '2ca909a1-e73e-4f92-b601-30c45abfc0d5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # Set to True during development, False in production
+DEBUG = True # Set to True during development, False in production
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # Add your production domain here
+
+# Internationalization
+LANGUAGE_CODE = 'en-us'  # Romanian language and locale
+TIME_ZONE = 'Europe/Bucharest'  # Timezone for Romania
+USE_I18N = True  # Enable Django's internationalization system
+USE_L10N = True  # Enable localized formatting of data
+USE_TZ = True  # Enable timezone-aware datetimes
+
+# Default charset
+DEFAULT_CHARSET = 'utf-8'  # Ensure UTF-8 encoding for all text-based operations
+
 
 # Application references
 INSTALLED_APPS = [
@@ -116,3 +127,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 if not DEBUG:
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')  # Add WhiteNoise for static file handling
+
+ 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'moviehit.management@gmail.com'  # Your Gmail address
+EMAIL_HOST_PASSWORD = 'gocw auek pmxe vwlh'  # Your Gmail password or app-specific password
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

@@ -54,6 +54,24 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\media\images\movies\default.png" />
+    <Content Include="static\styles\password_reset.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\styles\signin.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\password_reset.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\password_reset_confirm.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\password_reset_email.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\signin.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="update.bat">
       <SubType>Code</SubType>
     </Content>
@@ -68,11 +86,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="media\movies\" />
     <Folder Include="MovieHit\" />
     <Folder Include="MovieHit\management\" />
     <Folder Include="MovieHit\migrations\" />
-    <Folder Include="media\" />
     <Folder Include="description\" />
     <Folder Include="static\" />
     <Folder Include="static\media\images\" />

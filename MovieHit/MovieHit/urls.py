@@ -16,31 +16,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-# Uncomment next two lines to enable admin:
-#from django.contrib import admin
-#from django.urls import path
-
-from django.contrib import admin
-from django.urls import path
-from . import views  # Import your views
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),  # Use the correct function name
-]
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from . import views  # Import your views
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),  # Use the correct function name
+    path('', views.index, name='index'),
+    path('signin/', views.signin, name='signin'),
+    path('password_reset/', views.password_reset, name='password_reset'),
+    path('password_reset/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
 ]
 
 # Serve media files during development
-
 if settings.DEBUG or settings.ALLOWED_HOSTS:
-       urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-   
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
