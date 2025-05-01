@@ -4,37 +4,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MovieHit · Home</title>
-    <link rel="stylesheet" href="{% static 'navigation.css' %}">
-    <link rel="stylesheet" href="{% static 'content.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/content.css' %}">
 </head>
 <body>
-    <header class="panel">
-        <nav>
-            <div class="nav-left">
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">Top Rated</a>
+    <div class="card">
+        <div class="image-box">
+            <img src="{% static 'media/images/movies/default.png' %}" alt="movie">
+            <div class="content">
+                <h2>This is the title</h2>
+                <p>This is the content</p>
             </div>
-            <div class="search-bar">
-                <form method="GET" action="{% url 'index' %}">
-                    <input type="text" name="q" placeholder="Search for a movie..." value="{{ query }}" class="search-input">
-                    <button type="submit" class="search-button">Search</button>
-                </form>
-            </div>
-        </nav>
-    </header>
-
-    <main class="content">
-        <section class="movie-grid">
-            {% for movie in movies %}
-            <article class="movie-card">
-                <img src="{% static 'images/movies/default.png' %}" alt="Movie Poster" class="movie-poster">
-            </article>
-            {% endfor %}
-        </section>
-    </main>
+        </div>
+    </div>
 </body>
 </html>
-
-

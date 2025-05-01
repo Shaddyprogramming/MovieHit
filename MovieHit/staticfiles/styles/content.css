@@ -1,60 +1,56 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: #fff;
+.card {
+    display: inline-block;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
 }
+
+    .card .image-box {
+        width: auto;
+        height: auto;
+        border-radius: inherit;
+    }
+
+        .card .image-box img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: 50% 90%;
+            border-radius: inherit;
+            transition: 0.5s ease-in-out;
+        }
+
+    .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border: 2px solid white;
+        border-radius: inherit;
+        opacity: 0;
+        transition: 0.4s ease-in-out;
+    }
+
+    .card:hover img {
+        filter: grayscale(1) brightness(0.4);
+    }
+
+    .card:hover::after {
+        opacity: 1;
+        inset: 20px;
+    }
+
+    .card:hover .content {
+        opacity: 1;
+    }
 
 .content {
-    padding: 2rem;
-    margin-top: 5rem;
-}
-
-/* Movie Grid Layout */
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Always 4 columns */
-    gap: 2rem; /* Space between the cards */
-    justify-content: center;
-}
-
-/* Movie Card */
-.movie-card {
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 300px; /* Fixed height for the card */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .movie-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-    }
-
-/* Movie Poster */
-.movie-poster {
-    width: 100%; /* Full width of the card */
-    height: 100%; /* Full height of the card */
-    object-fit: cover; /* Ensure the image scales properly without distortion */
-    border-radius: 10px; /* Match the card's border radius */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .movie-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .movie-grid {
-        grid-template-columns: 1fr; /* Single column on very small screens */
-    }
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    text-align: center;
 }

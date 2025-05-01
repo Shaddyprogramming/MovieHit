@@ -50,11 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="description\cerinte_proiect_22-E1.md" />
-    <Content Include="media\movies\default.png" />
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="static\images\movies\default.png" />
+    <Content Include="static\media\images\movies\default.png" />
     <Content Include="update.bat">
       <SubType>Code</SubType>
     </Content>
@@ -76,8 +75,9 @@
     <Folder Include="media\" />
     <Folder Include="description\" />
     <Folder Include="static\" />
-    <Folder Include="static\images\" />
-    <Folder Include="static\images\movies\" />
+    <Folder Include="static\media\images\" />
+    <Folder Include="static\media\images\movies\" />
+    <Folder Include="static\media\" />
     <Folder Include="static\styles\" />
     <Folder Include="templates\" />
   </ItemGroup>
