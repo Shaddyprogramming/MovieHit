@@ -21,6 +21,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from . import views
+from django.urls import include, path
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,8 +30,9 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('password_reset/', views.password_reset, name='password_reset'),
     path('password_reset/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
+    path('accounts/', include('django.contrib.auth.urls')),  
+    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
 ]
 
-# Serve media files during development
 if settings.DEBUG or settings.ALLOWED_HOSTS:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

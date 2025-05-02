@@ -3,7 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>MovieHit</Name>
     <RootNamespace>MovieHit</RootNamespace>
-    <InterpreterId>MSBuild|venv|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,107 +53,11 @@
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="static\media\images\movies\2 Fast 2 Furious.jpg" />
-    <Content Include="static\media\images\movies\A Minecraft Movie.png" />
-    <Content Include="static\media\images\movies\Alien.jpg" />
-    <Content Include="static\media\images\movies\Annabelle.jpg" />
-    <Content Include="static\media\images\movies\Assassin%27s Creed.jpg" />
-    <Content Include="static\media\images\movies\Avangers Endgame.JPG" />
-    <Content Include="static\media\images\movies\Avengers Age of Ultron.jpg" />
-    <Content Include="static\media\images\movies\Avengers Infinity War.jpg" />
-    <Content Include="static\media\images\movies\Baby Driver.jpg" />
-    <Content Include="static\media\images\movies\Batman vs. Superman Dawn of Justice.jpg" />
-    <Content Include="static\media\images\movies\Black Adam.jpg" />
-    <Content Include="static\media\images\movies\Casino Royale.jpg" />
-    <Content Include="static\media\images\movies\Contact.png" />
-    <Content Include="static\media\images\movies\Cowboys &amp; Aliens.jpg" />
-    <Content Include="static\media\images\movies\Deadpool 2.jpg" />
     <Content Include="static\media\images\movies\default.png" />
-    <Content Include="static\media\images\movies\Die Hard.jpg" />
-    <Content Include="static\media\images\movies\Django Unchained.jpg" />
-    <Content Include="static\media\images\movies\Eternals.webp" />
-    <Content Include="static\media\images\movies\F9.jpg" />
-    <Content Include="static\media\images\movies\Fast &amp; Furious 7.jpg" />
-    <Content Include="static\media\images\movies\Fast &amp; Furious Presents Hobbs &amp; Shaw.JPG" />
-    <Content Include="static\media\images\movies\Fast &amp; Furious.jpg" />
-    <Content Include="static\media\images\movies\Fast Five.JPG" />
-    <Content Include="static\media\images\movies\Fast X.png" />
-    <Content Include="static\media\images\movies\Free Guy.jpg" />
-    <Content Include="static\media\images\movies\Furious 6.jpg" />
-    <Content Include="static\media\images\movies\G.I. Joe Retaliation.jpg" />
-    <Content Include="static\media\images\movies\G.I. Joe The Rise of Cobra.jpg" />
-    <Content Include="static\media\images\movies\Ghostbusters Afterlife.jpg" />
-    <Content Include="static\media\images\movies\Ghostbusters Frozen Empire.JPG" />
-    <Content Include="static\media\images\movies\Ghostbusters.jpg" />
-    <Content Include="static\media\images\movies\Glass Onion.webp" />
-    <Content Include="static\media\images\movies\Glass.jpg" />
-    <Content Include="static\media\images\movies\Guardians of the Galaxy Vol. 2.jpeg" />
-    <Content Include="static\media\images\movies\Guardians of the Galaxy Vol. 3.png" />
-    <Content Include="static\media\images\movies\Guardians of the Galaxy.jpg" />
-    <Content Include="static\media\images\movies\Indiana Jones and the Last Crusade.jpg" />
-    <Content Include="static\media\images\movies\John Wick Chapter 2.jpg" />
-    <Content Include="static\media\images\movies\John Wick Chapter 3 - Parabellum.jpg" />
-    <Content Include="static\media\images\movies\John Wick Chapter 4.png" />
-    <Content Include="static\media\images\movies\John Wick.jpg" />
-    <Content Include="static\media\images\movies\Joker.jpg" />
-    <Content Include="static\media\images\movies\Justice League.jpg" />
-    <Content Include="static\media\images\movies\Kingsman The Golden Circle.jpg" />
-    <Content Include="static\media\images\movies\Kingsman The Secret Service.jpg" />
-    <Content Include="static\media\images\movies\Knives Out.jpg" />
-    <Content Include="static\media\images\movies\Kung Fu Panda.jpg" />
-    <Content Include="static\media\images\movies\Madame Web.png" />
-    <Content Include="static\media\images\movies\Maze Runner The Death Cure.jpg" />
-    <Content Include="static\media\images\movies\Maze Runner The Scorch Trials.jpg" />
-    <Content Include="static\media\images\movies\Mission Dead Reckoning Part One.jpg" />
-    <Content Include="static\media\images\movies\Mission Impossible - Fallout.jpg" />
-    <Content Include="static\media\images\movies\Mission Impossible - Ghost Protocol.jpg" />
-    <Content Include="static\media\images\movies\Mission Impossible - Rogue Nation.jpg" />
-    <Content Include="static\media\images\movies\Mission Impossible II.png" />
-    <Content Include="static\media\images\movies\Mission Impossible III.jpeg" />
-    <Content Include="static\media\images\movies\Mission Impossible.jpg" />
-    <Content Include="static\media\images\movies\Morbius.jpg" />
-    <Content Include="static\media\images\movies\My Spy The Eternal City.png" />
-    <Content Include="static\media\images\movies\My Spy.jpg" />
-    <Content Include="static\media\images\movies\Nope.jpg" />
-    <Content Include="static\media\images\movies\Now You See Me 2.jpg" />
-    <Content Include="static\media\images\movies\Now You See Me.jpg" />
-    <Content Include="static\media\images\movies\Oblivion.jpg" />
-    <Content Include="static\media\images\movies\Oppenheimer.jpg" />
-    <Content Include="static\media\images\movies\Robin Hood.jpg" />
-    <Content Include="static\media\images\movies\Rush Hour 2.jpg" />
-    <Content Include="static\media\images\movies\Rush Hour 3.JPG" />
-    <Content Include="static\media\images\movies\Rush Hour.jpg" />
-    <Content Include="static\media\images\movies\San Andreas.jpg" />
-    <Content Include="static\media\images\movies\Shazam! Fury of the Gods.png" />
-    <Content Include="static\media\images\movies\Shazam!.jpg" />
-    <Content Include="static\media\images\movies\Sinners.jpg" />
-    <Content Include="static\media\images\movies\Snake Eyes G.I. Joe Origins.jpg" />
-    <Content Include="static\media\images\movies\Sonic the Hedgehog 2.jpg" />
-    <Content Include="static\media\images\movies\Sonic the Hedgehog 3.png" />
-    <Content Include="static\media\images\movies\Sonic the Hedgehog.webp" />
-    <Content Include="static\media\images\movies\Spiderman Into the Spider-Verse.jpg" />
-    <Content Include="static\media\images\movies\Split.jpg" />
-    <Content Include="static\media\images\movies\Star Wars Revenge of the Sith.jpg" />
-    <Content Include="static\media\images\movies\The Avengers.webp" />
-    <Content Include="static\media\images\movies\The Dark Knight Rises.jpg" />
-    <Content Include="static\media\images\movies\The Fast and the Furious Tokyo Drift.jpg" />
-    <Content Include="static\media\images\movies\The Fast and the Furious.jpg" />
-    <Content Include="static\media\images\movies\The Fate of the Furious.jpg" />
-    <Content Include="static\media\images\movies\The King%27s Man.jpg" />
-    <Content Include="static\media\images\movies\The Maze Runner.jpg" />
-    <Content Include="static\media\images\movies\The Nun.jpg" />
-    <Content Include="static\media\images\movies\The Transporter.jpg" />
-    <Content Include="static\media\images\movies\Toy Story 4.jpg" />
-    <Content Include="static\media\images\movies\Transformers Age of Extinction.jpg" />
-    <Content Include="static\media\images\movies\Transformers Dark of the Moon.jpg" />
-    <Content Include="static\media\images\movies\Transformers One.png" />
-    <Content Include="static\media\images\movies\Transformers Revenge of the Fallen.jpg" />
-    <Content Include="static\media\images\movies\Transformers Rise of the Beasts.jpg" />
-    <Content Include="static\media\images\movies\Transformers The Last Knight.jpg" />
-    <Content Include="static\media\images\movies\Transformers.jpg" />
-    <Content Include="static\media\images\movies\Transporter 2.jpg" />
-    <Content Include="static\media\images\movies\Transporter 3.jpg" />
-    <Content Include="static\media\images\movies\WALL-E.jpg" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="static\media\images\movies\Sinners.png" />
+>>>>>>> Stashed changes
     <Content Include="static\styles\password_reset.css">
       <SubType>Code</SubType>
     </Content>
@@ -186,10 +90,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="media\posters\" />
     <Folder Include="MovieHit\" />
     <Folder Include="MovieHit\management\" />
     <Folder Include="MovieHit\migrations\" />
     <Folder Include="description\" />
+    <Folder Include="media\" />
     <Folder Include="static\" />
     <Folder Include="static\media\images\" />
     <Folder Include="static\media\images\movies\" />

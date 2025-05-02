@@ -18,7 +18,6 @@ import platform
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MovieHit.settings')
 
-
     try:
         from django.core.management import execute_from_command_line, call_command
         # Automatically run collectstatic when starting the server

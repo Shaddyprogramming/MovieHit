@@ -11,14 +11,10 @@ class Movies(models.Model):
     directors = models.JSONField(help_text="A list of directors of the movie.")
     writers = models.JSONField(help_text="A list of writers of the movie.")
     actors = models.JSONField(help_text="A list of actors in the movie.")
+    poster = models.ImageField(upload_to='posters/', blank=True, null=True, help_text="Upload a poster image for the movie.")
     history = HistoricalRecords()
 
-
     #TODO 1
-    # un model pentru numarul de comentarii
-    #TODO 2
-    # un model pentru numarul de review-uri
-    #TODO 3
     # un model pentru descriere
 
     def __str__(self):

@@ -9,10 +9,10 @@ import pytz
 class MoviesAdmin(SimpleHistoryAdmin):
     list_display = ('name', 'year', 'length', 'rating', 'show_genres', 'formatted_history') 
     search_fields = ('name', 'year', 'rating')
-    #TODO 5
+    #TODO 2
     # la list filter adauga pentru alte atribute (fiecare)
     list_filter = ('year', 'rating')
-    #TODO 6
+    #TODO 3
     # pune ca sa fie dupa nume, an descrescator, dupa rating, durata pentry ordering
     ordering = ('-year', 'name')
 
