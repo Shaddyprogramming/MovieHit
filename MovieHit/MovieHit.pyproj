@@ -55,7 +55,17 @@
     </Content>
     <Content Include="static\media\images\movies\A Minecraft Movie.png" />
     <Content Include="static\media\images\movies\default.png" />
+    <Content Include="static\media\images\movies\Fast X.png" />
+    <Content Include="static\media\images\movies\Ghostbusters Frozen Empire.JPG" />
+    <Content Include="static\media\images\movies\Guardians of the Galaxy Vol. 3.png" />
+    <Content Include="static\media\images\movies\John Wick Chapter 4.png" />
+    <Content Include="static\media\images\movies\Madame Web.png" />
+    <Content Include="static\media\images\movies\Mission Dead Reckoning Part One.jpg" />
+    <Content Include="static\media\images\movies\My Spy The Eternal City.png" />
+    <Content Include="static\media\images\movies\Oppenheimer.jpg" />
     <Content Include="static\media\images\movies\Sinners.jpg" />
+    <Content Include="static\media\images\movies\Sonic the Hedgehog 3.png" />
+    <Content Include="static\media\images\movies\Transformers One.png" />
     <Content Include="static\styles\password_reset.css">
       <SubType>Code</SubType>
     </Content>
