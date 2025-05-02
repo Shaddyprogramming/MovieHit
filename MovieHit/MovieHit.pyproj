@@ -3,7 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>MovieHit</Name>
     <RootNamespace>MovieHit</RootNamespace>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|venv|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,7 +53,9 @@
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\media\images\movies\A Minecraft Movie.png" />
     <Content Include="static\media\images\movies\default.png" />
+    <Content Include="static\media\images\movies\Sinners.jpg" />
     <Content Include="static\styles\password_reset.css">
       <SubType>Code</SubType>
     </Content>
