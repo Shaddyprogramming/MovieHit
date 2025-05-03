@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.conf import settings
 from MovieHit.management.movies import Movies
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 import os
 
 def serve_media(request, path):
@@ -35,6 +35,13 @@ def index(request):
         movies_data = Movies.objects.all()
 
     return render(request, 'index.html', {'movies': movies_data, 'query': query})
+
+def account(request):
+    if request.user.is_authenticated:
+        return render(request, 'account.html')
+    else:
+        return redirect('signin')
+
 
 def signin(request):
     error = None
@@ -82,21 +89,23 @@ def signin(request):
 def password_reset(request):
     if request.method == 'POST':
         email = request.POST.get('email')
+        direct_reset = request.POST.get('direct_reset')
         
         # Check if the email exists in the user database
         users = User.objects.filter(email=email)
         
-        if users.exists():
+        # Handle AJAX request for direct reset
+        if direct_reset and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            if not email or not users.exists():
+                return JsonResponse({'success': False, 'error': 'Email not found or not provided'})
+                
             for user in users:
-                # Generate password reset token
                 token = default_token_generator.make_token(user)
                 uid = urlsafe_base64_encode(force_bytes(user.pk))
                 
-                # Build reset URL
                 current_site = get_current_site(request)
                 protocol = 'https' if request.is_secure() else 'http'
                 
-                # Prepare email content
                 context = {
                     'user': user,
                     'domain': current_site.domain,
@@ -109,7 +118,37 @@ def password_reset(request):
                 email_subject = 'Password Reset Request for MovieHit'
                 email_body = render_to_string('password_reset_email.html', context)
                 
-                # Send email
+                send_mail(
+                    email_subject,
+                    email_body,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [user.email],
+                    fail_silently=False
+                )
+            
+            return JsonResponse({'success': True})
+            
+        # Regular form submission for password reset
+        if users.exists():
+            for user in users:
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                
+                current_site = get_current_site(request)
+                protocol = 'https' if request.is_secure() else 'http'
+                
+                context = {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': uid,
+                    'token': token,
+                    'protocol': protocol,
+                    'site_name': 'MovieHit'
+                }
+                
+                email_subject = 'Password Reset Request for MovieHit'
+                email_body = render_to_string('password_reset_email.html', context)
+                
                 send_mail(
                     email_subject,
                     email_body,

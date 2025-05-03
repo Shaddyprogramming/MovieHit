@@ -21,13 +21,14 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from . import views
-from django.urls import include, path
+from django.urls import path
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('signin/', views.signin, name='signin'),
+    path('account/', views.account, name='account'),
     path('password_reset/', views.password_reset, name='password_reset'),
     path('password_reset/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),

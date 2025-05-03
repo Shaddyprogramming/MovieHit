@@ -53,15 +53,19 @@
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="static\media\images\icons\All.ico" />
-    <Content Include="static\media\images\icons\All.png" />
     <Content Include="static\media\images\icons\Logo.ico" />
     <Content Include="static\media\images\icons\Logo.png" />
     <Content Include="static\media\images\movies\default.png" />
+    <Content Include="static\styles\account.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\styles\password_reset.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\styles\signin.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\account.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\password_reset.html">

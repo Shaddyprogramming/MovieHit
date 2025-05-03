@@ -1,0 +1,207 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHit ⚪ Account</title>
+    <link rel="stylesheet" href="{% static 'styles/account.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'media/images/icons/Logo.ico' %}">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <header class="panel">
+        <nav>
+            <div class="nav-left">
+                <a href="{% url 'index' %}" class="nav-link logo-text">MovieHit</a>
+                <a href="#" class="nav-link">Top Rated</a>
+            </div>
+            <div class="search-bar">
+                <form method="GET" action="{% url 'index' %}">
+                    <input type="text" name="q" placeholder="Search for a movie..." class="search-input">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            <div class="nav-right">
+                {% if user.is_authenticated %}
+                <span class="username-display">Hi, {{ user.username }}!</span>
+                {% else %}
+                <a href="{% url 'signin' %}" class="nav-link">Sign In</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="account-page">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3>My Account</h3>
+            </div>
+            <div class="sidebar-menu">
+                <a href="#profile" class="sidebar-item active">Profile</a>
+                <a href="#security" class="sidebar-item">Security</a>
+                <a href="#preferences" class="sidebar-item">Preferences</a>
+            </div>
+            <div class="sidebar-footer">
+                <form method="POST" action="{% url 'logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-action logout">Log Out</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="account-content">
+            <!-- Profile Section -->
+            <div id="profile" class="content-section active">
+                <div class="section-header">
+                    <h2>Profile Information</h2>
+                </div>
+                <div class="profile-card">
+                    <div class="profile-image">
+                        <div class="avatar">{{ user.first_name|first|upper }}{{ user.last_name|first|upper }}</div>
+                    </div>
+                    <div class="profile-details">
+                        <div class="info-row">
+                            <div class="info-label">Username</div>
+                            <div class="info-value">{{ user.username }}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Full Name</div>
+                            <div class="info-value">{{ user.first_name }} {{ user.last_name }}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Email Address</div>
+                            <div class="info-value">{{ user.email|default:"No email provided" }}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Member Since</div>
+                            <div class="info-value">{{ user.date_joined|date:"F j, Y" }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-group">
+                    <button class="btn-primary">Edit Profile</button>
+                </div>
+            </div>
+
+            <!-- Security Section -->
+            <div id="security" class="content-section">
+                <div class="section-header">
+                    <h2>Security Settings</h2>
+                </div>
+                <div class="security-card">
+                    <h3>Password Management</h3>
+                    <p>For your account's security, we recommend changing your password regularly.</p>
+
+                    <form method="POST" id="direct-reset-form" action="#" class="password-reset-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="direct_reset" value="true">
+                        <button type="button" id="reset-password-btn" class="btn-secondary">Send Password Reset Link</button>
+                        <div id="reset-message" class="message-box hidden"></div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Preferences Section -->
+            <div id="preferences" class="content-section">
+                <div class="section-header">
+                    <h2>Viewing Preferences</h2>
+                </div>
+                <div class="preferences-card">
+                    <h3>Content Settings</h3>
+                    <div class="preference-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <div class="preference-label">Show recommendations based on viewing history</div>
+                    </div>
+                    <div class="preference-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <div class="preference-label">Auto-play trailers while browsing</div>
+                    </div>
+                    <div class="preference-item">
+                        <label class="toggle-switch">
+                            <input type="checkbox" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <div class="preference-label">Receive notifications about new releases</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab navigation
+            const menuItems = document.querySelectorAll('.sidebar-item');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = this.getAttribute('href').substring(1);
+
+                    // Update active menu item
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Show corresponding content section
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === target) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+
+            // Direct password reset functionality
+            const resetBtn = document.getElementById('reset-password-btn');
+            const resetMessage = document.getElementById('reset-message');
+
+            resetBtn.addEventListener('click', function() {
+                resetBtn.disabled = true;
+                resetBtn.textContent = 'Sending...';
+                resetMessage.classList.remove('hidden', 'error');
+                resetMessage.textContent = 'Processing your request...';
+
+                fetch('{% url "password_reset" %}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    },
+                    body: 'email={{ user.email|urlencode }}&direct_reset=true'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    resetBtn.disabled = false;
+                    resetBtn.textContent = 'Send Password Reset Link';
+
+                    if(data.success) {
+                        resetMessage.classList.add('success');
+                        resetMessage.textContent = 'Password reset link sent to your email.';
+                    } else {
+                        resetMessage.classList.add('error');
+                        resetMessage.textContent = data.error || 'Failed to send reset link. Try again later.';
+                    }
+                })
+                .catch(error => {
+                    resetBtn.disabled = false;
+                    resetBtn.textContent = 'Send Password Reset Link';
+                    resetMessage.classList.add('error');
+                    resetMessage.textContent = 'An error occurred. Please try again.';
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
