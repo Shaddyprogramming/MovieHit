@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '2ca909a1-e73e-4f92-b601-30c45abfc0d5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # Set to True during development, False in production
+DEBUG = False # Set to True during development, False in production
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # Add your production domain here
 

@@ -30,9 +30,14 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('password_reset/', views.password_reset, name='password_reset'),
     path('password_reset/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
-    path('accounts/', include('django.contrib.auth.urls')),  
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
 ]
 
-if settings.DEBUG or settings.ALLOWED_HOSTS:
+if settings.DEBUG:
+    # Use Django's static() helper for development
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+else:
+    # Use our custom view for production
+    urlpatterns += [
+        path('media/<path:path>', views.serve_media, name='serve_media'),
+    ]

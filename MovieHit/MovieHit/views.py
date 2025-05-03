@@ -9,6 +9,22 @@ from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.conf import settings
 from MovieHit.management.movies import Movies
+from django.http import HttpResponse, Http404
+import os
+
+def serve_media(request, path):
+    """
+    Serve media files in production.
+    """
+    media_path = os.path.join(settings.MEDIA_ROOT, path)
+    
+    if not os.path.exists(media_path):
+        raise Http404("Media file not found.")
+    
+    with open(media_path, 'rb') as media_file:
+        response = HttpResponse(media_file.read(), content_type="application/octet-stream")
+        response['Content-Disposition'] = f'inline; filename="{os.path.basename(media_path)}"'
+        return response
 
 def index(request):
     query = request.GET.get('q', '')
@@ -103,10 +119,10 @@ def password_reset(request):
                 )
             
             # Always show success message even if email doesn't exist for security reasons
-            return render(request, 'password_reset.html', {'message': 'Password reset email has been sent if the email is registered.'})
+            return render(request, 'password_reset.html', {'message': 'Password reset email has been sent if the email is registered. The email might be at spam.'})
         else:
             # For security reasons, don't disclose that the email doesn't exist
-            return render(request, 'password_reset.html', {'message': 'Password reset email has been sent if the email is registered.'})
+            return render(request, 'password_reset.html', {'message': 'Password reset email has been sent if the email is registered. The email might be at spam.'})
     
     return render(request, 'password_reset.html')
 

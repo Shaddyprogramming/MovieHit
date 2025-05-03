@@ -53,11 +53,11 @@
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\media\images\icons\All.ico" />
+    <Content Include="static\media\images\icons\All.png" />
+    <Content Include="static\media\images\icons\Logo.ico" />
+    <Content Include="static\media\images\icons\Logo.png" />
     <Content Include="static\media\images\movies\default.png" />
-<<<<<<< Updated upstream
-=======
-    <Content Include="static\media\images\movies\Sinners.png" />
->>>>>>> Stashed changes
     <Content Include="static\styles\password_reset.css">
       <SubType>Code</SubType>
     </Content>
@@ -100,6 +100,7 @@
     <Folder Include="static\media\images\" />
     <Folder Include="static\media\images\movies\" />
     <Folder Include="static\media\" />
+    <Folder Include="static\media\images\icons\" />
     <Folder Include="static\styles\" />
     <Folder Include="templates\" />
   </ItemGroup>
@@ -124,8 +125,6 @@
     </Interpreter>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
-  <!-- Specify pre- and post-build commands in the BeforeBuild and 
-       AfterBuild targets below. -->
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
