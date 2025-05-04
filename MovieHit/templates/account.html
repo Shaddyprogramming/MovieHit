@@ -167,20 +167,36 @@
             const resetMessage = document.getElementById('reset-message');
 
             resetBtn.addEventListener('click', function() {
+                // Get the user's email
+                const userEmail = "{{ user.email|escapejs }}";
+
+                if (!userEmail) {
+                    resetMessage.classList.remove('hidden');
+                    resetMessage.classList.add('error');
+                    resetMessage.textContent = 'You need to add an email to your account first.';
+                    return;
+                }
+
                 resetBtn.disabled = true;
                 resetBtn.textContent = 'Sending...';
-                resetMessage.classList.remove('hidden', 'error');
+                resetMessage.classList.remove('hidden');
                 resetMessage.textContent = 'Processing your request...';
 
                 fetch('{% url "password_reset" %}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                        'X-Requested-With': 'XMLHttpRequest'
                     },
-                    body: 'email={{ user.email|urlencode }}&direct_reset=true'
+                    body: `email=${encodeURIComponent(userEmail)}&direct_reset=true`
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     resetBtn.disabled = false;
                     resetBtn.textContent = 'Send Password Reset Link';
@@ -194,11 +210,11 @@
                     }
                 })
                 .catch(error => {
+                    console.error('Error:', error);
                     resetBtn.disabled = false;
                     resetBtn.textContent = 'Send Password Reset Link';
                     resetMessage.classList.add('error');
                     resetMessage.textContent = 'An error occurred. Please try again.';
-                    console.error('Error:', error);
                 });
             });
         });
