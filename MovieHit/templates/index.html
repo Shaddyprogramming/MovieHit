@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
     <link rel="stylesheet" href="{% static 'styles/content.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'media/images/icons/Logo.ico' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="panel">
@@ -37,6 +38,23 @@
     </header>
 
     <main class="page">
+        {% for banner in banners %}
+        {% if banner.active %}
+        <div class="hero-banner">
+            <div class="banner-overlay"></div>
+            <img src="{{ banner.banner_img.url }}" alt="Banner Image" class="banner-image">
+            <div class="banner-content">
+                <h1 class="banner-title">MovieHit</h1>
+                <p class="banner-tagline">where every Movie hits</p>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <div class="section-heading">
+            <h2>Latest Additions</h2>
+        </div>
+
         <div class="movie-grid">
             {% for movie in movies %}
             <div class="card">
@@ -66,5 +84,11 @@
             {% endfor %}
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; {% now "Y" %} MovieHit. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

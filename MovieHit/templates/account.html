@@ -72,17 +72,13 @@
                             <div class="info-value">{{ user.first_name }} {{ user.last_name }}</div>
                         </div>
                         <div class="info-row">
-                            <div class="info-label">Email Address</div>
-                            <div class="info-value">{{ user.email|default:"No email provided" }}</div>
-                        </div>
-                        <div class="info-row">
                             <div class="info-label">Member Since</div>
                             <div class="info-value">{{ user.date_joined|date:"F j, Y" }}</div>
                         </div>
                     </div>
                 </div>
                 <div class="action-group">
-                    <button class="btn-primary">Edit Profile</button>
+                    <a href="{% url 'edit_profile' %}" class="btn-primary">Edit Profile</a>
                 </div>
             </div>
 
@@ -92,17 +88,51 @@
                     <h2>Security Settings</h2>
                 </div>
                 <div class="security-card">
-                    <h3>Password Management</h3>
-                    <p>For your account's security, we recommend changing your password regularly.</p>
+                    <h3>Email Management</h3>
+                    <p>Update your email address to ensure you receive important notifications.</p>
 
-                    <form method="POST" id="direct-reset-form" action="#" class="password-reset-form">
+                    <div class="info-row">
+                        <div class="info-label">Current Email</div>
+                        <div class="info-value">
+                            {% if user.email %}
+                            {{ email_parts.0|slice:":3" }}***@{{ email_parts.1 }}
+                            {% else %}
+                            No email provided
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <form method="POST" id="email-update-form" class="email-update-form">
                         {% csrf_token %}
-                        <input type="hidden" name="direct_reset" value="true">
-                        <button type="button" id="reset-password-btn" class="btn-secondary">Send Password Reset Link</button>
-                        <div id="reset-message" class="message-box hidden"></div>
+                        <button type="button" id="update-email-btn" class="btn-secondary">Change Email</button>
+                        <div id="email-message" class="message-box hidden"></div>
+                    </form>
+                </div>
+
+                <div class="security-card">
+                    <h3>Password Management</h3>
+                    <p>Change your password to keep your account secure.</p>
+
+                    <div class="info-row">
+                        <div class="info-label">Password Status</div>
+                        <div class="info-value">
+                            {% if user.password %}
+                            Password set
+                            {% else %}
+                            No password set
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <form method="POST" id="password-update-form" class="password-update-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="email" value="{{ user.email }}">
+                        <button type="button" id="reset-password-btn" class="btn-secondary">Reset Password</button>
+                        <div id="password-message" class="message-box hidden"></div>
                     </form>
                 </div>
             </div>
+
 
             <!-- Preferences Section -->
             <div id="preferences" class="content-section">
@@ -116,108 +146,20 @@
                             <input type="checkbox" checked>
                             <span class="toggle-slider"></span>
                         </label>
-                        <div class="preference-label">Show recommendations based on viewing history</div>
+                        <div class="preference-label">Order sensitive search</div>
                     </div>
                     <div class="preference-item">
                         <label class="toggle-switch">
                             <input type="checkbox">
                             <span class="toggle-slider"></span>
                         </label>
-                        <div class="preference-label">Auto-play trailers while browsing</div>
-                    </div>
-                    <div class="preference-item">
-                        <label class="toggle-switch">
-                            <input type="checkbox" checked>
-                            <span class="toggle-slider"></span>
-                        </label>
-                        <div class="preference-label">Receive notifications about new releases</div>
+                        <div class="preference-label">Auto-play trailers</div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Tab navigation
-            const menuItems = document.querySelectorAll('.sidebar-item');
-            const contentSections = document.querySelectorAll('.content-section');
-
-            menuItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = this.getAttribute('href').substring(1);
-
-                    // Update active menu item
-                    menuItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Show corresponding content section
-                    contentSections.forEach(section => {
-                        section.classList.remove('active');
-                        if (section.id === target) {
-                            section.classList.add('active');
-                        }
-                    });
-                });
-            });
-
-            // Direct password reset functionality
-            const resetBtn = document.getElementById('reset-password-btn');
-            const resetMessage = document.getElementById('reset-message');
-
-            resetBtn.addEventListener('click', function() {
-                // Get the user's email
-                const userEmail = "{{ user.email|escapejs }}";
-
-                if (!userEmail) {
-                    resetMessage.classList.remove('hidden');
-                    resetMessage.classList.add('error');
-                    resetMessage.textContent = 'You need to add an email to your account first.';
-                    return;
-                }
-
-                resetBtn.disabled = true;
-                resetBtn.textContent = 'Sending...';
-                resetMessage.classList.remove('hidden');
-                resetMessage.textContent = 'Processing your request...';
-
-                fetch('{% url "password_reset" %}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    body: `email=${encodeURIComponent(userEmail)}&direct_reset=true`
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    resetBtn.disabled = false;
-                    resetBtn.textContent = 'Send Password Reset Link';
-
-                    if(data.success) {
-                        resetMessage.classList.add('success');
-                        resetMessage.textContent = 'Password reset link sent to your email.';
-                    } else {
-                        resetMessage.classList.add('error');
-                        resetMessage.textContent = data.error || 'Failed to send reset link. Try again later.';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    resetBtn.disabled = false;
-                    resetBtn.textContent = 'Send Password Reset Link';
-                    resetMessage.classList.add('error');
-                    resetMessage.textContent = 'An error occurred. Please try again.';
-                });
-            });
-        });
-    </script>
+    <script src="{% static 'scripts/javascript/account.js' %}"></script>
 </body>
 </html>

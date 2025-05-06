@@ -34,6 +34,9 @@
     <Compile Include="MovieHit\admin.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MovieHit\management\banners.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MovieHit\management\movies.py">
       <SubType>Code</SubType>
     </Compile>
@@ -50,13 +53,122 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="description\cerinte_proiect_22-E1.md" />
+    <Content Include="media\posters\2_Fast_2_Furious.png" />
+    <Content Include="media\posters\Alien.png" />
+    <Content Include="media\posters\Annabelle.png" />
+    <Content Include="media\posters\Assassins_Creed.png" />
+    <Content Include="media\posters\Avangers_Endgame.png" />
+    <Content Include="media\posters\Avengers_Age_of_Ultron.png" />
+    <Content Include="media\posters\Avengers_Infinity_War.png" />
+    <Content Include="media\posters\A_Minecraft_Movie.png" />
+    <Content Include="media\posters\Baby_Driver.png" />
+    <Content Include="media\posters\Batman_vs._Superman_Dawn_of_Justice.png" />
+    <Content Include="media\posters\Black_Adam.png" />
+    <Content Include="media\posters\Casino_Royale.png" />
+    <Content Include="media\posters\Contact.png" />
+    <Content Include="media\posters\Cowboys__Aliens.png" />
+    <Content Include="media\posters\Deadpool_2.png" />
+    <Content Include="media\posters\Die_Hard.png" />
+    <Content Include="media\posters\Django_Unchained.png" />
+    <Content Include="media\posters\Eternals.png" />
+    <Content Include="media\posters\F9.png" />
+    <Content Include="media\posters\Fast_Five.png" />
+    <Content Include="media\posters\Fast_X.png" />
+    <Content Include="media\posters\Fast__Furious.png" />
+    <Content Include="media\posters\Fast__Furious_7.png" />
+    <Content Include="media\posters\Fast__Furious_Presents_Hobbs__Shaw.png" />
+    <Content Include="media\posters\Free_Guy.png" />
+    <Content Include="media\posters\Furious_6.png" />
+    <Content Include="media\posters\G.I._Joe_Retaliation.png" />
+    <Content Include="media\posters\G.I._Joe_The_Rise_of_Cobra.png" />
+    <Content Include="media\posters\Ghostbusters.png" />
+    <Content Include="media\posters\Ghostbusters_Afterlife.png" />
+    <Content Include="media\posters\Ghostbusters_Frozen_Empire.png" />
+    <Content Include="media\posters\Glass.png" />
+    <Content Include="media\posters\Glass_Onion.png" />
+    <Content Include="media\posters\Guardians_of_the_Galaxy.png" />
+    <Content Include="media\posters\Guardians_of_the_Galaxy_Vol._2.png" />
+    <Content Include="media\posters\Guardians_of_the_Galaxy_Vol._3.png" />
+    <Content Include="media\posters\Indiana_Jones_and_the_Last_Crusade.png" />
+    <Content Include="media\posters\John_Wick.png" />
+    <Content Include="media\posters\John_Wick_Chapter_2.png" />
+    <Content Include="media\posters\John_Wick_Chapter_3_-_Parabellum.png" />
+    <Content Include="media\posters\John_Wick_Chapter_4.png" />
+    <Content Include="media\posters\Joker.png" />
+    <Content Include="media\posters\Justice_League.png" />
+    <Content Include="media\posters\Kingsman_The_Golden_Circle.png" />
+    <Content Include="media\posters\Kingsman_The_Secret_Service.png" />
+    <Content Include="media\posters\Knives_Out.png" />
+    <Content Include="media\posters\Kung_Fu_Panda.png" />
+    <Content Include="media\posters\Madame_Web.png" />
+    <Content Include="media\posters\Maze_Runner_The_Death_Cure.png" />
+    <Content Include="media\posters\Maze_Runner_The_Scorch_Trials.png" />
+    <Content Include="media\posters\Mission_Dead_Reckoning_Part_One.png" />
+    <Content Include="media\posters\Mission_Impossible.png" />
+    <Content Include="media\posters\Mission_Impossible_-_Fallout.png" />
+    <Content Include="media\posters\Mission_Impossible_-_Ghost_Protocol.png" />
+    <Content Include="media\posters\Mission_Impossible_-_Rogue_Nation.png" />
+    <Content Include="media\posters\Mission_Impossible_II.png" />
+    <Content Include="media\posters\Mission_Impossible_III.png" />
+    <Content Include="media\posters\Morbius.png" />
+    <Content Include="media\posters\My_Spy.png" />
+    <Content Include="media\posters\My_Spy_The_Eternal_City.png" />
+    <Content Include="media\posters\Nope.png" />
+    <Content Include="media\posters\Now_You_See_Me.png" />
+    <Content Include="media\posters\Now_You_See_Me_2.png" />
+    <Content Include="media\posters\Oblivion.png" />
+    <Content Include="media\posters\Oppenheimer.png" />
+    <Content Include="media\posters\Robin_Hood.png" />
+    <Content Include="media\posters\Rush_Hour.png" />
+    <Content Include="media\posters\Rush_Hour_2.png" />
+    <Content Include="media\posters\Rush_Hour_3.png" />
+    <Content Include="media\posters\San_Andreas.png" />
+    <Content Include="media\posters\Shazam.png" />
+    <Content Include="media\posters\Shazam_Fury_of_the_Gods.png" />
+    <Content Include="media\posters\Sinners.png" />
+    <Content Include="media\posters\Snake_Eyes_G.I._Joe_Origins.png" />
+    <Content Include="media\posters\Sonic_the_Hedgehog.png" />
+    <Content Include="media\posters\Sonic_the_Hedgehog_2.png" />
+    <Content Include="media\posters\Sonic_the_Hedgehog_3.png" />
+    <Content Include="media\posters\Spiderman_Into_the_Spider-Verse.png" />
+    <Content Include="media\posters\Split.png" />
+    <Content Include="media\posters\Star_Wars_Revenge_of_the_Sith.png" />
+    <Content Include="media\posters\The_Avengers.png" />
+    <Content Include="media\posters\The_Dark_Knight_Rises.png" />
+    <Content Include="media\posters\The_Fast_and_the_Furious.png" />
+    <Content Include="media\posters\The_Fast_and_the_Furious_Tokyo_Drift.png" />
+    <Content Include="media\posters\The_Fate_of_the_Furious.png" />
+    <Content Include="media\posters\The_Kings_Man.png" />
+    <Content Include="media\posters\The_Maze_Runner.png" />
+    <Content Include="media\posters\The_Nun.png" />
+    <Content Include="media\posters\The_Transporter.png" />
+    <Content Include="media\posters\Toy_Story_4.png" />
+    <Content Include="media\posters\Transformers.png" />
+    <Content Include="media\posters\Transformers_Age_of_Extinction.png" />
+    <Content Include="media\posters\Transformers_Dark_of_the_Moon.png" />
+    <Content Include="media\posters\Transformers_One.png" />
+    <Content Include="media\posters\Transformers_Revenge_of_the_Fallen.png" />
+    <Content Include="media\posters\Transformers_Rise_of_the_Beasts.png" />
+    <Content Include="media\posters\Transformers_The_Last_Knight.png" />
+    <Content Include="media\posters\Transporter_2.png" />
+    <Content Include="media\posters\Transporter_3.png" />
+    <Content Include="media\posters\WALL-E.png" />
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\media\images\icons\Logo.ico" />
     <Content Include="static\media\images\icons\Logo.png" />
     <Content Include="static\media\images\movies\default.png" />
+    <Content Include="static\scripts\javascript\account.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\scripts\javascript\signin.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\styles\account.css">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="static\styles\email_update.css">
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\styles\password_reset.css">
@@ -66,6 +178,15 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\account.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\edit_profile.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\email_update_confirm.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\email_update_email.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\password_reset.html">
@@ -105,6 +226,8 @@
     <Folder Include="static\media\images\movies\" />
     <Folder Include="static\media\" />
     <Folder Include="static\media\images\icons\" />
+    <Folder Include="static\scripts\" />
+    <Folder Include="static\scripts\javascript\" />
     <Folder Include="static\styles\" />
     <Folder Include="templates\" />
   </ItemGroup>

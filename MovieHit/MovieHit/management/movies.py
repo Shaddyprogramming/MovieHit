@@ -17,6 +17,9 @@ class Movies(models.Model):
     #TODO 1
     # un model pentru descriere
 
+    #TODO NU STIU
+    # un model pentru linkuri youtube trailer
+
     def __str__(self):
         return self.name
 

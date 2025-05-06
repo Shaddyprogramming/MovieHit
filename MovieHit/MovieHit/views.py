@@ -9,6 +9,7 @@ from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.conf import settings
 from MovieHit.management.movies import Movies
+from MovieHit.management.banners import Banners
 from django.http import HttpResponse, Http404, JsonResponse
 import os
 
@@ -33,14 +34,159 @@ def index(request):
         movies_data = Movies.objects.filter(name__icontains=query)
     else:
         movies_data = Movies.objects.all()
-
-    return render(request, 'index.html', {'movies': movies_data, 'query': query})
+    banners_data = Banners.objects.all()
+    
+    return render(request, 'index.html', {'banners':banners_data,'movies': movies_data, 'query': query})
 
 def account(request):
     if request.user.is_authenticated:
-        return render(request, 'account.html')
+        email_parts = request.user.email.split('@') if request.user.email else ['', '']
+        return render(request, 'account.html', {'email_parts': email_parts})
     else:
         return redirect('signin')
+
+def edit_profile(request):
+    if not request.user.is_authenticated:
+        return redirect('signin')
+        
+    message = None
+    error = False
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        
+        # Check if username already exists for another user
+        if User.objects.exclude(pk=request.user.pk).filter(username=username).exists():
+            message = "Username already exists"
+            error = True
+        else:
+            user = request.user
+            user.username = username
+            user.first_name = first_name
+            user.last_name = last_name
+            user.save()
+            message = "Profile updated successfully"
+            
+    return render(request, 'edit_profile.html', {'message': message, 'error': error})
+
+def update_email(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({'success': False, 'error': 'Authentication required'})
+    
+    if request.method != 'POST' or not request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return JsonResponse({'success': False, 'error': 'Invalid request'})
+    
+    try:
+        user = request.user
+        
+        if not user.email:
+            return JsonResponse({'success': False, 'error': 'You need to have an email set up first'})
+            
+        # Generate token for email confirmation
+        token = default_token_generator.make_token(user)
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        # Using empty string for new_email_b64 as it's a placeholder
+        new_email_b64 = urlsafe_base64_encode(force_bytes('placeholder'))
+        
+        current_site = get_current_site(request)
+        protocol = 'https' if request.is_secure() else 'http'
+        
+        context = {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': uid,
+            'token': token,
+            'new_email_b64': new_email_b64,
+            'protocol': protocol,
+            'site_name': 'MovieHit'
+        }
+        
+        email_subject = 'Change Email Address for MovieHit'
+        email_body = render_to_string('email_update_email.html', context)
+        
+        send_mail(
+            email_subject,
+            email_body,
+            settings.DEFAULT_FROM_EMAIL,
+            [user.email],
+            fail_silently=False
+        )
+        
+        return JsonResponse({'success': True, 'message': 'Email update link sent to your current email address'})
+    except Exception as e:
+        return JsonResponse({'success': False, 'error': str(e)})
+
+
+def email_update_confirm(request, uidb64, token, new_email_b64):
+    try:
+        # Decode the user id
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+        
+        # Validate the token
+        if default_token_generator.check_token(user, token):
+            if request.method == 'POST':
+                new_email = request.POST.get('new_email')
+                
+                if not new_email:
+                    return render(request, 'email_update_confirm.html', {
+                        'validlink': True,
+                        'message': 'Email address is required.',
+                        'form_submitted': False
+                    })
+                
+                # Check if email is already in use by another user
+                if User.objects.exclude(pk=user.pk).filter(email=new_email).exists():
+                    return render(request, 'email_update_confirm.html', {
+                        'validlink': True,
+                        'message': 'This email is already in use by another account.',
+                        'form_submitted': False
+                    })
+                
+                # Update the email
+                had_previous_email = bool(user.email)
+                old_email = user.email
+                user.email = new_email
+                user.save()
+                
+                # Send notification to old email if it exists
+                if had_previous_email:
+                    notification_subject = 'Email Address Updated for MovieHit Account'
+                    notification_body = "Your email address for your MovieHit account has been updated. If you did not make this change, please secure your account immediately by resetting your password."
+                    send_mail(
+                        notification_subject,
+                        notification_body,
+                        settings.DEFAULT_FROM_EMAIL,
+                        [old_email],
+                        fail_silently=True
+                    )
+                
+                return render(request, 'email_update_confirm.html', {
+                    'validlink': True,
+                    'message': 'Your email has been updated successfully.',
+                    'form_submitted': True
+                })
+            
+            # Show the form to enter new email
+            return render(request, 'email_update_confirm.html', {
+                'validlink': True,
+                'form_submitted': False
+            })
+        else:
+            # Invalid token
+            return render(request, 'email_update_confirm.html', {
+                'validlink': False,
+                'message': 'The confirmation link is invalid or has expired.'
+            })
+    
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        # Invalid user id or email
+        return render(request, 'email_update_confirm.html', {
+            'validlink': False,
+            'message': 'The confirmation link is invalid.'
+        })
 
 
 def signin(request):

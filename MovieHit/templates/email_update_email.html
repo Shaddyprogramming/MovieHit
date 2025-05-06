@@ -1,0 +1,19 @@
+{% load i18n %}{% autoescape off %}
+Hello from MovieHit!
+
+You're receiving this email because you requested to update the email address for your user account at {{ site_name }}.
+
+Please click on the link below to enter your new email address:
+{% block reset_link %}
+{{ protocol }}://{{ domain }}{% url 'email_update_confirm' uidb64=uid token=token new_email_b64=new_email_b64 %}
+{% endblock %}
+
+Your username, in case you've forgotten: {{ user.username }}
+
+If you did not request this change, please ignore this email.
+
+Thanks for using our site!
+
+The MovieHit Team
+{% endautoescape %}
+

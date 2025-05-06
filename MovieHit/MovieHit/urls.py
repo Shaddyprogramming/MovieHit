@@ -24,13 +24,17 @@ from . import views
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('signin/', views.signin, name='signin'),
     path('account/', views.account, name='account'),
+    path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('password_reset/', views.password_reset, name='password_reset'),
     path('password_reset/<uidb64>/<token>/', views.password_reset_confirm, name='password_reset_confirm'),
+    path('update_email/', views.update_email, name='update_email'),
+    path('update_email/<uidb64>/<token>/<str:new_email_b64>/', views.email_update_confirm, name='email_update_confirm'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
 ]
 

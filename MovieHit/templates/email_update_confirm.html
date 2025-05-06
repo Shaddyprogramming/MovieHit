@@ -1,0 +1,56 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHit ⚪ Email Update</title>
+    <link rel="stylesheet" href="{% static 'styles/password_reset.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/email_update.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'media/images/icons/Logo.ico' %}">
+
+</head>
+<body>
+    <div class="auth-container">
+        <h1>Update Email Address</h1>
+
+        {% if validlink %}
+        {% if not form_submitted %}
+        <p>Please enter your new email address below:</p>
+        <form method="POST" class="auth-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="new_email">New Email Address</label>
+                <input type="email" id="new_email" name="new_email" class="form-control" required>
+            </div>
+            <button type="submit" class="btn-primary">Update Email</button>
+        </form>
+        {% if message %}
+        <div class="message error-message">
+            {{ message }}
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="message success-message">
+            {{ message }}
+        </div>
+        <div class="form-group">
+            <p>You can now <a href="{% url 'signin' %}" class="styled-link">sign in</a> with your updated email address.</p>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="message error-message">
+            {{ message }}
+        </div>
+        <div class="form-group">
+            <p>Please return to your <a href="{% url 'account' %}" class="styled-link">account settings</a> and try again.</p>
+        </div>
+        {% endif %}
+
+        <div class="back-to-home">
+            <a href="{% url 'index' %}" class="styled-link">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
