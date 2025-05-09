@@ -11,7 +11,7 @@ class MoviesAdmin(SimpleHistoryAdmin):
     list_display = ('name', 'year', 'length', 'rating', 'show_genres', 'formatted_history') 
     search_fields = ('name', 'year', 'rating')
    
-    list_filter = ('year', 'rating', 'length', 'genres', 'actors')
+    list_filter = ('year', 'rating', 'length')
     
     ordering = ( 'name','-year', 'length', 'rating', 'genres', 'actors', 'writers', 'directors')
 
