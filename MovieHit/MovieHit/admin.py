@@ -10,12 +10,10 @@ import pytz
 class MoviesAdmin(SimpleHistoryAdmin):
     list_display = ('name', 'year', 'length', 'rating', 'show_genres', 'formatted_history') 
     search_fields = ('name', 'year', 'rating')
-    #TODO 2
-    # la list filter adauga pentru alte atribute (fiecare)
-    list_filter = ('year', 'rating')
-    #TODO 3
-    # pune ca sa fie dupa nume, an descrescator, dupa rating, durata pentry ordering
-    ordering = ('-year', 'name')
+   
+    list_filter = ('year', 'rating', 'length', 'genres', 'actors')
+    
+    ordering = ( 'name','-year', 'length', 'rating', 'genres', 'actors', 'writers', 'directors')
 
     def show_genres(self, obj):
         if not obj.genres:
