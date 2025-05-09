@@ -3,7 +3,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>MovieHit</Name>
     <RootNamespace>MovieHit</RootNamespace>
-    <InterpreterId>MSBuild|venv|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="description\cerinte_proiect_22-E1.md" />
+    <Content Include="fill.bat">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="media\posters\2_Fast_2_Furious.png" />
     <Content Include="media\posters\Alien.png" />
     <Content Include="media\posters\Annabelle.png" />
@@ -171,6 +174,9 @@
     <Content Include="static\styles\email_update.css">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\styles\movie_details.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="static\styles\password_reset.css">
       <SubType>Code</SubType>
     </Content>
@@ -187,6 +193,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\email_update_email.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="templates\movie_detail.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="templates\password_reset.html">

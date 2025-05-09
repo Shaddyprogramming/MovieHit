@@ -1,0 +1,104 @@
+﻿{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieHit | {{ movie.name }}</title>
+    <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/movie_details.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'media/images/icons/Logo.ico' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header class="panel">
+        <nav>
+            <div class="nav-left">
+                <a href="{% url 'index' %}" class="nav-link logo-text">MovieHit</a>
+                <a href="#" class="nav-link">Top Rated</a>
+            </div>
+            <div class="search-bar">
+                <form method="GET" action="{% url 'index' %}">
+                    <input type="text" name="q" placeholder="Search for a movie..." class="search-input">
+                    <button type="submit" class="search-button">Search</button>
+                </form>
+            </div>
+            <div class="nav-right">
+                {% if user.is_authenticated %}
+                <form method="POST" action="{% url 'account' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link">Account</button>
+                </form>
+                {% else %}
+                <a href="{% url 'signin' %}" class="nav-link">Sign In</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="movie-detail-container">
+            <div class="movie-poster">
+                {% if movie.poster %}
+                <img src="{{ movie.poster.url }}" alt="{{ movie.name }} Poster">
+                {% else %}
+                <img src="{% static 'media/images/movies/default.png' %}" alt="Default Poster">
+                {% endif %}
+            </div>
+
+            <div class="movie-info">
+                <h1 class="movie-title">{{ movie.name }}</h1>
+                <div class="movie-metadata">
+                    <span>{{ movie.year }}</span>
+                    <span class="metadata-divider">|</span>
+                    <span>{{ movie.length }} mins</span>
+                    <span class="metadata-divider">|</span>
+                    <span>{{ movie.age }}</span>
+                    <span class="metadata-divider">|</span>
+                    <span>Rating: {{ movie.rating }}/10</span>
+                </div>
+
+                <div class="movie-description">
+                    {{ movie.description }}
+                </div>
+
+                <div class="movie-details">
+                    <div class="detail-row">
+                        <div class="detail-label">Genres:</div>
+                        <div>{{ movie.genres|join:", " }}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Directors:</div>
+                        <div>{{ movie.directors|join:", " }}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Writers:</div>
+                        <div>{{ movie.writers|join:", " }}</div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Actors:</div>
+                        <div>{{ movie.actors|join:", " }}</div>
+                    </div>
+                </div>
+            </div>
+
+            {% if movie.trailer != "No trailer" %}
+            <div class="movie-trailer">
+                <h2>Trailer</h2>
+                <div class="trailer-container">
+                    <iframe src="{{ movie.trailer }}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; {% now "Y" %} MovieHit. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -58,28 +58,30 @@
         <div class="movie-grid">
             {% for movie in movies %}
             <div class="card">
-                <div class="image-box">
-                    {% if movie.poster %}
-                    <img src="{{ movie.poster.url }}" alt="Movie Poster">
-                    {% else %}
-                    <img src="{% static 'media/images/movies/default.png' %}" alt="Default Poster">
-                    {% endif %}
-                    <div class="content">
-                        <div class="content-inner">
-                            <h3 class="movie-title">{{ movie.name }}</h3>
-                            <ul class="movie-details">
-                                <li><strong>Year:</strong> {{ movie.year }}</li>
-                                <li><strong>Length:</strong> {{ movie.length }} mins</li>
-                                <li><strong>Rating:</strong> {{ movie.rating }}</li>
-                                <li><strong>Genres:</strong> {{ movie.genres|join:", " }}</li>
-                                <li><strong>Age:</strong> {{ movie.age }}</li>
-                                <li><strong>Directors:</strong> {{ movie.directors|join:", " }}</li>
-                                <li><strong>Writers:</strong> {{ movie.writers|join:", " }}</li>
-                                <li><strong>Actors:</strong> {{ movie.actors|join:", " }}</li>
-                            </ul>
+                <a href="{% url 'movie_detail' movie_id=movie.unique_id %}" class="movie-link">
+                    <div class="image-box">
+                        {% if movie.poster %}
+                        <img src="{{ movie.poster.url }}" alt="Movie Poster">
+                        {% else %}
+                        <img src="{% static 'media/images/movies/default.png' %}" alt="Default Poster">
+                        {% endif %}
+                        <div class="content">
+                            <div class="content-inner">
+                                <h3 class="movie-title">{{ movie.name }}</h3>
+                                <ul class="movie-details">
+                                    <li><strong>Year:</strong> {{ movie.year }}</li>
+                                    <li><strong>Length:</strong> {{ movie.length }} mins</li>
+                                    <li><strong>Rating:</strong> {{ movie.rating }}</li>
+                                    <li><strong>Genres:</strong> {{ movie.genres|join:", " }}</li>
+                                    <li><strong>Age:</strong> {{ movie.age }}</li>
+                                    <li><strong>Directors:</strong> {{ movie.directors|join:", " }}</li>
+                                    <li><strong>Writers:</strong> {{ movie.writers|join:", " }}</li>
+                                    <li><strong>Actors:</strong> {{ movie.actors|join:", " }}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>

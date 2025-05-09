@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
@@ -37,6 +37,17 @@ def index(request):
     banners_data = Banners.objects.all()
     
     return render(request, 'index.html', {'banners':banners_data,'movies': movies_data, 'query': query})
+
+def movie_detail(request, movie_id):
+    """
+    View for displaying details of a specific movie.
+    Uses the unique_id field from the Movies model.
+    """
+    # Get the movie by its unique_id or return 404
+    movie = get_object_or_404(Movies, unique_id=movie_id)
+    
+    # Render the movie detail template
+    return render(request, 'movie_detail.html', {'movie': movie})
 
 def account(request):
     if request.user.is_authenticated:

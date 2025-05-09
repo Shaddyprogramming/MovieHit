@@ -36,6 +36,8 @@ urlpatterns = [
     path('update_email/', views.update_email, name='update_email'),
     path('update_email/<uidb64>/<token>/<str:new_email_b64>/', views.email_update_confirm, name='email_update_confirm'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+    path('movie/<str:movie_id>/', views.movie_detail, name='movie_detail'),
+
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,250 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-y: auto;
+}
+
+.page {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 60px 0 0 0;
+    background-color: #0a0a0a;
+    min-height: calc(100vh - 60px);
+    overflow-y: auto;
+}
+
+.movie-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-top: 120px;
+}
+
+.movie-poster {
+    flex: 0 0 330px;
+}
+
+    .movie-poster img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+.movie-info {
+    flex: 1 1 600px;
+    padding-left: 10px;
+}
+
+.movie-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    color: #e50914;
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+}
+
+.movie-metadata {
+    margin-bottom: 25px;
+    color: #b3b3b3;
+    font-size: 1.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+    .movie-metadata span {
+        padding: 0 5px;
+    }
+
+.metadata-divider {
+    color: #e50914;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+.movie-description {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+    color: #e6e6e6;
+    max-width: 90%;
+}
+
+.movie-details {
+    background: #1e1e1e;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border: 1px solid #333;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+    .detail-row:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+.detail-label {
+    flex: 0 0 120px;
+    font-weight: 700;
+    color: #e50914;
+    font-size: 1.05rem;
+    padding-top: 2px;
+}
+
+.detail-row div:last-child {
+    flex: 1;
+    color: #e6e6e6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.movie-trailer {
+    width: 100%;
+    margin-top: 40px;
+}
+
+    .movie-trailer h2 {
+        color: #e50914;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border-left: 4px solid #e50914;
+        padding-left: 15px;
+    }
+
+.trailer-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+    .trailer-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        border: none;
+    }
+
+.footer {
+    background-color: #0a0a0a;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+.footer-content {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .movie-title {
+        font-size: 1.7rem;
+    }
+
+    .movie-description {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .movie-detail-container {
+        padding: 100px 20px 30px;
+        gap: 30px;
+    }
+
+    .movie-poster {
+        flex: 0 0 280px;
+        margin: 0 auto;
+    }
+
+    .movie-info {
+        flex: 1 1 100%;
+        padding-left: 0;
+    }
+
+    .movie-title {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .movie-metadata {
+        justify-content: center;
+    }
+
+    .movie-description {
+        text-align: center;
+    }
+
+    .detail-row {
+        flex-direction: column;
+    }
+
+    .detail-label {
+        margin-bottom: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .movie-detail-container {
+        padding: 80px 15px 20px;
+    }
+
+    .movie-poster {
+        flex: 0 0 240px;
+    }
+
+    .movie-title {
+        font-size: 1.4rem;
+    }
+
+    .movie-metadata {
+        font-size: 0.9rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .metadata-divider {
+        display: none;
+    }
+
+    .movie-metadata span {
+        margin-bottom: 5px;
+    }
+
+    .movie-description {
+        font-size: 1.05rem;
+    }
+
+    .movie-trailer h2 {
+        font-size: 1.5rem;
+    }
+
+    .detail-label, .detail-row div:last-child {
+        font-size: 0.95rem;
+    }
+}
