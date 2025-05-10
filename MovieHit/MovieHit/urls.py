@@ -21,7 +21,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from . import views
-from django.urls import path
 from django.contrib.auth.views import LogoutView
 
 
@@ -36,8 +35,12 @@ urlpatterns = [
     path('update_email/', views.update_email, name='update_email'),
     path('update_email/<uidb64>/<token>/<str:new_email_b64>/', views.email_update_confirm, name='email_update_confirm'),
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+    
+    # Movie detail and comment routes
     path('movie/<str:movie_id>/', views.movie_detail, name='movie_detail'),
-
+    path('movie/<str:movie_id>/add_comment/', views.add_comment, name='add_comment'),
+    path('movie/<str:movie_id>/edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
+    path('movie/<str:movie_id>/delete_comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
 ]
 
 if settings.DEBUG:

@@ -37,6 +37,7 @@
     <Compile Include="MovieHit\management\banners.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MovieHit\management\comments.py" />
     <Compile Include="MovieHit\management\movies.py">
       <SubType>Code</SubType>
     </Compile>
@@ -165,6 +166,7 @@
     <Content Include="static\scripts\javascript\account.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="static\scripts\javascript\movie_details.js" />
     <Content Include="static\scripts\javascript\signin.js">
       <SubType>Code</SubType>
     </Content>

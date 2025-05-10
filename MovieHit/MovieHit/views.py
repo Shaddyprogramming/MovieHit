@@ -8,9 +8,11 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.contrib.sites.shortcuts import get_current_site
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from MovieHit.management.movies import Movies
 from MovieHit.management.banners import Banners
-from django.http import HttpResponse, Http404, JsonResponse
+from MovieHit.management.comments import Comment
+from django.http import HttpResponse, Http404, JsonResponse, HttpResponseForbidden
 import os
 
 def serve_media(request, path):
@@ -36,7 +38,7 @@ def index(request):
         movies_data = Movies.objects.all()
     banners_data = Banners.objects.all()
     
-    return render(request, 'index.html', {'banners':banners_data,'movies': movies_data, 'query': query})
+    return render(request, 'index.html', {'banners': banners_data, 'movies': movies_data, 'query': query})
 
 def movie_detail(request, movie_id):
     """
@@ -46,8 +48,61 @@ def movie_detail(request, movie_id):
     # Get the movie by its unique_id or return 404
     movie = get_object_or_404(Movies, unique_id=movie_id)
     
+    # Get all comments for this movie
+    comments = Comment.objects.filter(movie=movie)
+    
     # Render the movie detail template
-    return render(request, 'movie_detail.html', {'movie': movie})
+    return render(request, 'movie_detail.html', {'movie': movie, 'comments': comments})
+
+@login_required
+def add_comment(request, movie_id):
+    if request.method == 'POST':
+        movie = get_object_or_404(Movies, unique_id=movie_id)
+        text = request.POST.get('comment_text', '').strip()
+        rating = int(request.POST.get('rating', 0))  # Get the rating
+        
+        if text:
+            Comment.objects.create(
+                movie=movie,
+                user=request.user,
+                text=text,
+                rating=rating  # Add the rating here
+            )
+    
+    # Redirect back to movie detail page
+    return redirect('movie_detail', movie_id=movie_id)
+
+@login_required
+def edit_comment(request, movie_id, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    
+    # Check if the user is the owner of the comment
+    if request.user != comment.user:
+        return HttpResponseForbidden("You don't have permission to edit this comment.")
+    
+    if request.method == 'POST':
+        text = request.POST.get('edit_comment_text', '').strip()
+        rating = int(request.POST.get('edit_rating', 0))
+        
+        if text:
+            comment.text = text
+            comment.rating = rating
+            comment.save()
+    
+    return redirect('movie_detail', movie_id=movie_id)
+
+@login_required
+def delete_comment(request, movie_id, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    
+    # Check if the user is the owner of the comment
+    if request.user != comment.user:
+        return HttpResponseForbidden("You don't have permission to delete this comment.")
+    
+    if request.method == 'POST':
+        comment.delete()
+    
+    return redirect('movie_detail', movie_id=movie_id)
 
 def account(request):
     if request.user.is_authenticated:

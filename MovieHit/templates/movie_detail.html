@@ -5,14 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieHit | {{ movie.name }}</title>
+    <title>MovieHit ⚪ {{ movie.name }}</title>
     <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
     <link rel="stylesheet" href="{% static 'styles/movie_details.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'media/images/icons/Logo.ico' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <script src="{% static 'scripts/javascript/movie_details.js' %}" defer></script>
 </head>
 <body>
+    <!-- Navigation Header -->
     <header class="panel">
         <nav>
             <div class="nav-left">
@@ -39,7 +40,9 @@
     </header>
 
     <main class="page">
+        <!-- Movie Details Section -->
         <div class="movie-detail-container">
+            <!-- Movie Poster -->
             <div class="movie-poster">
                 {% if movie.poster %}
                 <img src="{{ movie.poster.url }}" alt="{{ movie.name }} Poster">
@@ -48,6 +51,7 @@
                 {% endif %}
             </div>
 
+            <!-- Movie Information -->
             <div class="movie-info">
                 <h1 class="movie-title">{{ movie.name }}</h1>
                 <div class="movie-metadata">
@@ -84,21 +88,131 @@
                 </div>
             </div>
 
+            <!-- Movie Trailer Section -->
             {% if movie.trailer != "No trailer" %}
             <div class="movie-trailer">
                 <h2>Trailer</h2>
-                <div class="trailer-container">
-                    <iframe src="{{ movie.trailer }}" frameborder="0" allowfullscreen></iframe>
+                <div class="trailer-container" id="trailer-container" data-trailer-url="{{ movie.trailer }}">
+                    <!-- Trailer will be inserted here by JavaScript -->
                 </div>
             </div>
             {% endif %}
         </div>
+
+        <!-- Comments Section -->
+        <div class="comments-section">
+            <h2>Comments</h2>
+
+            <!-- Add Comment Form (only for logged-in users) -->
+            {% if user.is_authenticated %}
+            <div class="add-comment-container">
+                <form method="POST" action="{% url 'add_comment' movie.unique_id %}" class="add-comment-form">
+                    {% csrf_token %}
+                    <textarea name="comment_text" placeholder="Share your thoughts..." required></textarea>
+                    <div class="rating-selector">
+                        <label for="rating">Your Rating (0-10):</label>
+                        <select name="rating" id="rating" required>
+                            <option value="" disabled selected>Select rating</option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="add-comment-btn">Post Comment</button>
+                </form>
+            </div>
+            {% endif %}
+
+            <!-- Existing Comments -->
+            <div class="comments-list">
+                {% if comments %}
+                {% for comment in comments %}
+                <div class="comment" id="comment-{{ comment.id }}">
+                    <!-- Comment Header -->
+                    <div class="comment-header">
+                        <span class="comment-author">{{ comment.user.username }}</span>
+                        <span class="comment-rating">Rating: {{ comment.rating }}/10</span>
+                        <span class="comment-date">{{ comment.created_at|date:"F j, Y, g:i a" }}</span>
+                    </div>
+
+                    <!-- Comment Content -->
+                    <div class="comment-content">
+                        {{ comment.text }}
+                    </div>
+
+                    <!-- Comment Edit Form (hidden by default) -->
+                    <div class="comment-edit-form" style="display: none;">
+                        <form method="POST" action="{% url 'edit_comment' movie.unique_id comment.id %}">
+                            {% csrf_token %}
+                            <textarea name="edit_comment_text" required>{{ comment.text }}</textarea>
+                            <div class="rating-selector">
+                                <label for="edit_rating_{{ comment.id }}">Rating (0-10):</label>
+                                <select name="edit_rating" id="edit_rating_{{ comment.id }}" required
+                                        data-current-rating="{{ comment.rating }}">
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                            <div class="edit-form-actions">
+                                <button type="submit" class="comment-edit-save">Save</button>
+                                <button type="button" class="comment-edit-cancel" data-comment-id="{{ comment.id }}">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Comment Actions (Edit/Delete) - Only for comment owner -->
+                    {% if user == comment.user %}
+                    <div class="comment-actions">
+                        <button type="button" class="comment-edit-btn" data-comment-id="{{ comment.id }}">Edit</button>
+                        <form method="POST" action="{% url 'delete_comment' movie.unique_id comment.id %}" class="delete-form">
+                            {% csrf_token %}
+                            <button type="button" class="comment-delete-btn" data-comment-id="{{ comment.id }}">Delete</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="no-comments">No comments yet. Be the first to share your thoughts!</div>
+                {% endif %}
+            </div>
+        </div>
     </main>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; {% now "Y" %} MovieHit. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="delete-confirmation-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Confirm Delete</h3>
+            <p>Are you sure you want to delete this comment? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="confirm-delete-btn">Delete</button>
+                <button id="cancel-delete-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

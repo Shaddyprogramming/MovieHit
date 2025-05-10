@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from simple_history.admin import SimpleHistoryAdmin
 from .management.movies import Movies
 from .management.banners import Banners
+from .management.comments import Comment
 import pytz
 
 @admin.register(Movies)
@@ -13,7 +14,7 @@ class MoviesAdmin(SimpleHistoryAdmin):
    
     list_filter = ('year', 'rating', 'length')
     
-    ordering = ( 'name','-year', 'length', 'rating', 'genres', 'actors', 'writers', 'directors')
+    ordering = ('name', '-year', 'length', 'rating', 'genres', 'actors', 'writers', 'directors')
 
     def show_genres(self, obj):
         if not obj.genres:
@@ -62,3 +63,15 @@ class BannersAdmin(SimpleHistoryAdmin):
         return None
 
     formatted_history.short_description = 'History'
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('user', 'movie', 'rating', 'short_text', 'created_at')
+    list_filter = ('rating', 'created_at', 'movie')
+    search_fields = ('text', 'user__username', 'movie__name')
+    ordering = ('-created_at',)
+    
+    def short_text(self, obj):
+        return obj.text[:50] + '...' if len(obj.text) > 50 else obj.text
+    
+    short_text.short_description = 'Comment'
