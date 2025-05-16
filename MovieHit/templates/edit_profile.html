@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'styles/account.css' %}">
     <link rel="stylesheet" href="{% static 'styles/navigation.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'media/images/icons/Logo.ico' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation bar -->
@@ -27,6 +28,7 @@
             <div class="nav-right">
                 {% if user.is_authenticated %}
                 <span class="username-display">Hi, {{ user.username }}!</span>
+                <a href="{% url 'account' %}" class="nav-link">Account</a>
                 {% else %}
                 <a href="{% url 'signin' %}" class="nav-link">Sign In</a>
                 {% endif %}
@@ -37,7 +39,9 @@
     <main class="edit-profile-container">
         <div class="form-card">
             <div class="form-header">
-                <h1>Edit Profile Information</h1>
+                <h1>Edit Your Profile</h1>
+                <p class="form-subtitle">Update your personal information below</p>
+
                 {% if message %}
                 <div class="message-box {% if error %}error{% else %}success{% endif %}">
                     {{ message }}
@@ -45,23 +49,30 @@
                 {% endif %}
             </div>
 
-            <form method="POST" action="{% url 'edit_profile' %}">
+            <form method="POST" action="{% url 'edit_profile' %}" class="profile-form">
                 {% csrf_token %}
 
-                <div class="form-group">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" value="{{ user.username }}" required>
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" value="{{ user.username }}" required>
+                        <small class="form-hint">Your unique username on MovieHit</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input type="text" id="first_name" name="first_name" class="form-control" value="{{ user.first_name }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input type="text" id="last_name" name="last_name" class="form-control" value="{{ user.last_name }}" required>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="first_name" class="form-label">First Name</label>
-                    <input type="text" id="first_name" name="first_name" class="form-control" value="{{ user.first_name }}" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="last_name" class="form-label">Last Name</label>
-                    <input type="text" id="last_name" name="last_name" class="form-control" value="{{ user.last_name }}" required>
-                </div>
+                <div class="form-divider"></div>
 
                 <div class="form-group buttons-row">
                     <a href="{% url 'account' %}" class="btn-secondary">Cancel</a>
@@ -71,7 +82,12 @@
         </div>
     </main>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; {% now "Y" %} MovieHit. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="{% static 'scripts/javascript/edit_profile.js' %}"></script>
 </body>
 </html>
-

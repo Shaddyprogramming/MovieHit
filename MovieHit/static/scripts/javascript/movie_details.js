@@ -23,15 +23,52 @@ function initTrailerPlayer() {
     const videoId = extractYouTubeVideoId(trailerUrl);
     if (!videoId) return;
 
+    // Check if autoplay is enabled in user preferences
+    const autoplay = localStorage.getItem('autoplayTrailers') === 'true';
+
     // Create and configure the iframe
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.youtube.com/embed/${videoId}`;
+
+    // Add autoplay parameter if enabled in preferences
+    if (autoplay) {
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
+        // Add necessary permissions for autoplay
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    } else {
+        iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    }
+
     iframe.width = '100%';
     iframe.height = '100%';
     iframe.allowFullscreen = true;
     iframe.style.border = 'none'; // Modern approach instead of frameBorder
 
     trailerContainer.appendChild(iframe);
+
+    // Add indicator if autoplay is enabled
+    if (autoplay) {
+        const autoplayIndicator = document.createElement('div');
+        autoplayIndicator.className = 'autoplay-indicator';
+        autoplayIndicator.textContent = 'Autoplay On';
+        autoplayIndicator.style.position = 'absolute';
+        autoplayIndicator.style.top = '10px';
+        autoplayIndicator.style.right = '10px';
+        autoplayIndicator.style.background = 'rgba(0, 0, 0, 0.6)';
+        autoplayIndicator.style.color = 'white';
+        autoplayIndicator.style.padding = '5px 10px';
+        autoplayIndicator.style.borderRadius = '4px';
+        autoplayIndicator.style.fontSize = '12px';
+        autoplayIndicator.style.opacity = '1';
+        autoplayIndicator.style.transition = 'opacity 0.5s';
+
+        trailerContainer.style.position = 'relative';
+        trailerContainer.appendChild(autoplayIndicator);
+
+        // Fade out indicator after a few seconds
+        setTimeout(() => {
+            autoplayIndicator.style.opacity = '0';
+        }, 3000);
+    }
 }
 
 /**
@@ -271,4 +308,3 @@ function scrollToComment() {
 if (window.location.hash) {
     scrollToComment();
 }
-

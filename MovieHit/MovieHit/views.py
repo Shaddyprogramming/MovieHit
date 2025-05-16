@@ -30,15 +30,64 @@ def serve_media(request, path):
         return response
 
 def index(request):
-    query = request.GET.get('q', '')
-
+    query = request.GET.get('q', '')  # Fixed variable name from 'y' to 'query'
+    
+    # Check for order sensitive preference (from session, cookie or GET parameter)
+    order_sensitive = False
+    
+    # Check in session if user is logged in
+    if request.user.is_authenticated and 'orderSensitiveSearch' in request.session:
+        order_sensitive = request.session.get('orderSensitiveSearch')
+    # Check in cookies as fallback
+    elif request.COOKIES.get('orderSensitiveSearch') == 'true':
+        order_sensitive = True
+    
     if query:
-        movies_data = Movies.objects.filter(name__icontains=query)
+        # Use different filters based on the order sensitive preference
+        if order_sensitive:
+            movies_data = Movies.objects.filter(name__istartswith=query)
+        else:
+            movies_data = Movies.objects.filter(name__icontains=query)
     else:
         movies_data = Movies.objects.all()
+        
     banners_data = Banners.objects.all()
     
     return render(request, 'index.html', {'banners': banners_data, 'movies': movies_data, 'query': query})
+
+def save_preference(request):
+    """
+    Save user preferences like order sensitive search setting
+    """
+    if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        try:
+            preference_name = request.POST.get('preference_name')
+            preference_value = request.POST.get('preference_value') == 'true'
+            
+            if preference_name == 'orderSensitiveSearch':
+                # Save to session
+                request.session['orderSensitiveSearch'] = preference_value
+                
+                # Prepare response
+                response = JsonResponse({'success': True})
+                
+                # Set cookie as fallback for non-authenticated users
+                max_age = 365 * 24 * 60 * 60  # 1 year in seconds
+                response.set_cookie(
+                    'orderSensitiveSearch', 
+                    str(preference_value).lower(), 
+                    max_age=max_age,
+                    secure=request.is_secure(),
+                    httponly=False  # Allow JavaScript access
+                )
+                return response
+            
+            return JsonResponse({'success': False, 'error': 'Unknown preference'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request'}, status=400)
+
 
 def movie_detail(request, movie_id):
     """

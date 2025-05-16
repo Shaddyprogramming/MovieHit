@@ -1,6 +1,7 @@
-/**
+﻿/**
  * MovieHit Account Management JavaScript
- * Handles account section navigation, email updates, and password resets
+ * Handles account section navigation, email updates, password resets,
+ * and user preferences
  */
 document.addEventListener('DOMContentLoaded', function () {
     // Tab switching functionality for account sections
@@ -37,8 +38,20 @@ function initializeTabNavigation() {
                     section.classList.add('active');
                 }
             });
+
+            // Update URL hash without scrolling
+            history.replaceState(null, null, `#${target}`);
         });
     });
+
+    // Check if there's a hash in the URL to activate that tab
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        const targetMenu = document.querySelector(`.sidebar-item[href="#${targetId}"]`);
+        if (targetMenu) {
+            targetMenu.click();
+        }
+    }
 }
 
 /**
@@ -152,18 +165,141 @@ function initializePreferenceToggles() {
     const toggles = document.querySelectorAll('.toggle-switch input');
 
     toggles.forEach(toggle => {
+        // Load saved preferences from localStorage
+        const preferenceName = toggle.parentElement.nextElementSibling.textContent.trim();
+        if (preferenceName === "Auto-play trailers") {
+            toggle.checked = localStorage.getItem('autoplayTrailers') === 'true';
+        } else if (preferenceName === "Order sensitive search") {
+            toggle.checked = localStorage.getItem('orderSensitiveSearch') === 'true';
+        }
+
+        // Set up change event handler
         toggle.addEventListener('change', function () {
             // Get the preference label and checked state
-            const label = this.parentElement.nextElementSibling.textContent;
+            const label = this.parentElement.nextElementSibling.textContent.trim();
             const isChecked = this.checked;
 
-            // Future implementation: Save preference to user settings via AJAX
-            console.log(`Preference "${label}" set to: ${isChecked}`);
+            // Handle different preference types
+            if (label === "Auto-play trailers") {
+                saveAutoplayPreference(isChecked);
+            } else if (label === "Order sensitive search") {
+                saveOrderSensitivePreference(isChecked);
+            }
 
-            // Here you would typically save this preference via AJAX
-            // For now we just log it to console
+            // Show visual feedback
+            showSavedConfirmation(this.parentElement.parentElement);
         });
     });
+}
+
+/**
+ * Saves autoplay trailer preference to localStorage
+ * @param {boolean} isEnabled - Whether autoplay is enabled
+ */
+function saveAutoplayPreference(isEnabled) {
+    localStorage.setItem('autoplayTrailers', isEnabled);
+    console.log(`Trailer autoplay set to: ${isEnabled}`);
+}
+
+/**
+ * Saves order sensitive search preference to localStorage and server
+ * @param {boolean} isEnabled - Whether order sensitive search is enabled
+ */
+function saveOrderSensitivePreference(isEnabled) {
+    // Save to localStorage for client-side use
+    localStorage.setItem('orderSensitiveSearch', isEnabled);
+    console.log(`Order sensitive search set to: ${isEnabled}`);
+
+    // Also save to server so the view function can access it
+    savePreferenceToServer('orderSensitiveSearch', isEnabled);
+}
+
+/**
+ * Sends preference to the server if available via AJAX
+ * @param {string} name - Name of the preference
+ * @param {boolean} value - Value of the preference
+ */
+function savePreferenceToServer(name, value) {
+    // Check if we have an endpoint to save preferences
+    try {
+        // Get CSRF token for secure request
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        // If no CSRF token, we might be working with just localStorage
+        if (!csrfToken) return;
+
+        // Use cookies as a fallback mechanism
+        document.cookie = `${name}=${value}; path=/; max-age=${365 * 24 * 60 * 60}; SameSite=Lax`;
+
+        // Attempt to save to server if save_preference endpoint exists
+        fetch('/save_preference/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': csrfToken,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: `preference_name=${encodeURIComponent(name)}&preference_value=${encodeURIComponent(value)}`
+        })
+            .then(response => {
+                if (!response.ok) {
+                    console.log('Preference saved to cookie only (server endpoint might not exist)');
+                    return;
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data && !data.success) {
+                    console.error('Error saving preference to server:', data.error);
+                } else if (data && data.success) {
+                    console.log('Preference saved to server successfully');
+                }
+            })
+            .catch(error => {
+                // This might happen if the endpoint doesn't exist, which is fine
+                // We already saved to localStorage and cookie
+                console.log('Preference saved locally only');
+            });
+    } catch (error) {
+        console.log('Using local storage only for preferences');
+    }
+}
+
+/**
+ * Shows a saved confirmation indicator
+ * @param {HTMLElement} parentElement - The parent element to append the indicator to
+ */
+function showSavedConfirmation(parentElement) {
+    // Create confirmation element
+    const feedbackEl = document.createElement('span');
+    feedbackEl.className = 'preference-saved';
+    feedbackEl.textContent = '✓ Saved';
+
+    // Style the element
+    feedbackEl.style.marginLeft = '10px';
+    feedbackEl.style.color = '#4CAF50';
+    feedbackEl.style.fontWeight = 'bold';
+    feedbackEl.style.opacity = '1';
+    feedbackEl.style.transition = 'opacity 0.5s ease-out';
+
+    // Remove any existing feedback
+    const existingFeedback = parentElement.querySelector('.preference-saved');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
+
+    // Add new feedback
+    parentElement.appendChild(feedbackEl);
+
+    // Remove feedback after a delay
+    setTimeout(() => {
+        feedbackEl.style.opacity = '0';
+        setTimeout(() => {
+            if (feedbackEl.parentNode) {
+                feedbackEl.parentNode.removeChild(feedbackEl);
+            }
+        }, 500);
+    }, 1500);
 }
 
 /**
@@ -193,4 +329,7 @@ function showMessage(element, text, type = 'info') {
     // Set message content and type
     element.textContent = text;
     element.classList.add(type);
+
+    // Ensure element is visible with smooth scrolling
+    element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }

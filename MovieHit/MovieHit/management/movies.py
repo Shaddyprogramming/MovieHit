@@ -16,7 +16,7 @@ class Movies(models.Model):
     description = models.CharField(max_length=400, default="No description", help_text="The description of the movie.")
     trailer = models.URLField(max_length=200, default="No trailer", help_text="The URL of the movie's trailer.")
     unique_id = models.CharField(max_length=50, blank=True, null=True, unique=True, help_text="Unique ID for the movie URL")
-    poster = models.ImageField(upload_to='posters/', blank=True, null=True, default="No poster", help_text="Upload a poster image for the movie.")
+    poster = models.ImageField(upload_to='posters/', blank=True, null=True, help_text="Upload a poster image for the movie.")
     history = HistoricalRecords()
 
     def __str__(self):

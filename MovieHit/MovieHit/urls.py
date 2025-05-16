@@ -37,6 +37,7 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     
     # Movie detail and comment routes
+    path('save_preference/', views.save_preference, name='save_preference'),
     path('movie/<str:movie_id>/', views.movie_detail, name='movie_detail'),
     path('movie/<str:movie_id>/add_comment/', views.add_comment, name='add_comment'),
     path('movie/<str:movie_id>/edit_comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
