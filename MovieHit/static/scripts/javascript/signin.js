@@ -40,6 +40,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const signinForm = document.getElementById('signin-form');
     const signupForm = document.getElementById('signup-form');
 
+    const passwordInput = document.getElementById('new-password');
+    const confirmInput = document.getElementById('confirm-password');
+    const passwordMessage = document.getElementById('password-match-message');
+
+    if (passwordInput && confirmInput && passwordMessage) {
+        function validatePasswords() {
+            if (confirmInput.value && passwordInput.value !== confirmInput.value) {
+                confirmInput.classList.add('invalid');
+                passwordMessage.classList.add('visible');
+                return false;
+            } else {
+                confirmInput.classList.remove('invalid');
+                passwordMessage.classList.remove('visible');
+                return true;
+            }
+        }
+
+        confirmInput.addEventListener('input', validatePasswords);
+        passwordInput.addEventListener('input', validatePasswords);
+        confirmInput.addEventListener('blur', validatePasswords);
+    }
+
     if (signinForm) {
         signinForm.addEventListener('submit', function (e) {
             const username = this.querySelector('input[name="username"]');
@@ -61,17 +83,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const lastName = this.querySelector('input[name="last_name"]');
             const password = this.querySelector('input[name="password"]');
             const confirmPassword = this.querySelector('input[name="confirm_password"]');
+            const email = this.querySelector('input[name="email"]');
             let hasError = false;
             let errorMessage = '';
 
             if (!username.value.trim() || !firstName.value.trim() ||
                 !lastName.value.trim() || !password.value.trim() ||
-                !confirmPassword.value.trim()) {
+                !confirmPassword.value.trim() || !email.value.trim()) {
                 hasError = true;
                 errorMessage = 'All fields are required';
             } else if (password.value !== confirmPassword.value) {
                 hasError = true;
                 errorMessage = 'Passwords do not match';
+                confirmPassword.classList.add('invalid');
+                passwordMessage.classList.add('visible');
             } else if (password.value.length < 8) {
                 hasError = true;
                 errorMessage = 'Password must be at least 8 characters';

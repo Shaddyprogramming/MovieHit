@@ -1,6 +1,3 @@
-/* MovieHit - Movie Details Styles */
-
-/* Base Styles */
 body {
     margin: 0;
     padding: 0;
@@ -8,6 +5,7 @@ body {
     background-color: #0a0a0a;
     color: #ffffff;
     line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
 }
 
 .page {
@@ -19,7 +17,6 @@ body {
     overflow-y: auto;
 }
 
-/* Animation and Transition Helpers */
 .transition-height {
     transition: min-height 0.3s ease;
 }
@@ -38,20 +35,19 @@ body {
     }
 }
 
-/* Movie Detail Container */
 .movie-detail-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 120px 20px 40px;
+    padding: 80px 15px 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Movie Poster */
 .movie-poster {
-    flex: 0 0 330px;
+    flex: 0 0 240px;
     position: relative;
+    margin: 0 auto;
 }
 
     .movie-poster img {
@@ -61,52 +57,51 @@ body {
         display: block;
     }
 
-/* Movie Information */
 .movie-info {
-    flex: 1 1 600px;
-    padding-left: 10px;
+    flex: 1;
+    padding: 0;
 }
 
 .movie-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 700;
-    margin: 0 0 20px 0;
+    margin: 0 0 15px 0;
     color: #e50914;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: -0.5px;
     line-height: 1.1;
+    text-align: center;
 }
 
 .movie-metadata {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: #b3b3b3;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
 }
 
     .movie-metadata span {
         padding: 0 5px;
+        margin-bottom: 5px;
     }
 
 .metadata-divider {
-    color: #e50914;
-    margin: 0 5px;
-    font-weight: bold;
+    display: none;
 }
 
 .movie-description {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     line-height: 1.7;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
     color: #e6e6e6;
-    max-width: 90%;
+    text-align: center;
 }
 
 .movie-details {
     background: #1e1e1e;
-    padding: 25px;
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     border: 1px solid #333;
@@ -114,6 +109,7 @@ body {
 
 .detail-row {
     display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -126,30 +122,28 @@ body {
     }
 
 .detail-label {
-    flex: 0 0 120px;
     font-weight: 700;
     color: #e50914;
-    font-size: 1.05rem;
-    padding-top: 2px;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
 }
 
 .detail-row div:last-child {
-    flex: 1;
     color: #e6e6e6;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    font-size: 0.95rem;
 }
 
-/* Movie Trailer */
 .movie-trailer {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
     .movie-trailer h2 {
         color: #e50914;
-        font-size: 1.8rem;
-        margin-bottom: 20px;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
         font-weight: 600;
         letter-spacing: 0.5px;
         border-left: 4px solid #e50914;
@@ -175,31 +169,29 @@ body {
         border: none;
     }
 
-/* Comments Section */
 .comments-section {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 100%;
+    margin: 30px auto;
+    padding: 0 15px;
 }
 
     .comments-section h2 {
-        font-size: 24px;
-        margin-bottom: 20px;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
         color: #e50914;
         border-left: 4px solid #e50914;
         padding-left: 15px;
     }
 
 .comments-list {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
-/* Add Comment Form */
 .add-comment-container {
     background: #1e1e1e;
-    padding: 25px;
+    padding: 20px;
     border-radius: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
     border: 1px solid #333;
 }
@@ -215,6 +207,7 @@ body {
     min-height: 100px;
     resize: vertical;
     font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
 }
 
 .add-comment-btn {
@@ -227,23 +220,22 @@ body {
     font-weight: 500;
     font-size: 16px;
     transition: background-color 0.2s ease;
+    width: 100%;
 }
 
     .add-comment-btn:hover {
         background-color: #f40612;
     }
 
-/* Comment Styling */
 .comment {
     background: #1e1e1e;
-    padding: 20px;
+    padding: 15px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border: 1px solid #333;
     position: relative;
-    /* Added to prevent resizing */
-    min-height: 110px;
+    min-height: 150px;
     transition: min-height 0.3s ease, background-color 0.3s ease;
 }
 
@@ -253,21 +245,20 @@ body {
 
 .comment-header {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .comment-author {
     font-weight: 600;
     color: #e50914;
-    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .comment-rating {
     color: #ffc107;
     font-weight: 500;
-    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 .comment-date {
@@ -279,29 +270,25 @@ body {
     line-height: 1.6;
     color: #e6e6e6;
     margin-bottom: 15px;
-    min-height: 20px; /* Ensures consistency in height */
+    min-height: 20px;
 }
 
 .no-comments {
     color: #888;
     font-style: italic;
     text-align: center;
-    padding: 30px 0;
+    padding: 25px 0;
     background: #1e1e1e;
     border-radius: 8px;
     border: 1px solid #333;
 }
 
-/* Comment Actions */
 .comment-actions {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    margin-top: auto;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    transition: opacity 0.2s ease;
+    margin-top: 15px;
+    position: static;
 }
 
 .comment-edit-btn,
@@ -314,6 +301,7 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
     color: #e6e6e6;
+    flex: 1;
 }
 
 .comment-edit-btn {
@@ -339,7 +327,6 @@ body {
         transform: translateY(0);
     }
 
-/* Comment Edit Form */
 .comment-edit-form {
     border: 1px solid #444;
     border-radius: 6px;
@@ -366,15 +353,14 @@ body {
 .rating-selector {
     margin-bottom: 15px;
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
     .rating-selector label {
-        margin-right: 10px;
+        margin-bottom: 8px;
         color: #e6e6e6;
         font-weight: 500;
-        margin-bottom: 5px;
     }
 
     .rating-selector select {
@@ -383,21 +369,25 @@ body {
         border: 1px solid #444;
         background-color: #222;
         color: #fff;
-        min-width: 100px;
+        width: 100%;
     }
 
 .edit-form-actions {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     gap: 10px;
     margin-top: 10px;
 }
+
+    .edit-form-actions button {
+        width: 100%;
+    }
 
 .comment-edit-save {
     background-color: #2c7a7b;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -411,7 +401,7 @@ body {
     background-color: #4a5568;
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
@@ -421,7 +411,6 @@ body {
         background-color: #718096;
     }
 
-/* Delete Confirmation Modal */
 .modal {
     position: fixed;
     top: 0;
@@ -439,10 +428,9 @@ body {
 
 .modal-content {
     background-color: #1e1e1e;
-    padding: 25px;
+    padding: 20px;
     border-radius: 8px;
-    max-width: 500px;
-    width: 90%;
+    width: 95%;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
     transform: scale(1);
@@ -456,19 +444,20 @@ body {
     }
 
     .modal-content p {
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         color: #e6e6e6;
         line-height: 1.5;
     }
 
 .modal-actions {
     display: flex;
-    justify-content: flex-end;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
 }
 
     .modal-actions button {
-        padding: 8px 16px;
+        width: 100%;
+        padding: 10px 16px;
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -501,10 +490,9 @@ body {
         transform: translateY(0);
     }
 
-/* Footer */
 .footer {
     background-color: #0a0a0a;
-    padding: 20px 0;
+    padding: 15px 0;
     text-align: center;
     border-top: 1px solid #222;
 }
@@ -514,145 +502,168 @@ body {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 1024px) {
-    .movie-title {
-        font-size: 1.7rem;
-    }
-
-    .movie-description {
-        max-width: 100%;
-    }
-
-    .comment-actions {
-        position: static;
-        margin-top: 15px;
-    }
-}
-
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 481px) {
     .movie-detail-container {
         padding: 100px 20px 30px;
-        gap: 30px;
     }
 
     .movie-poster {
         flex: 0 0 280px;
-        margin: 0 auto;
+    }
+
+    .movie-title {
+        font-size: 1.5rem;
+    }
+
+    .movie-metadata {
+        font-size: 1rem;
+    }
+
+    .comment {
+        min-height: 130px;
+        padding: 20px;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .movie-detail-container {
+        max-width: 1200px;
+        flex-direction: row;
+        gap: 30px;
+        padding: 120px 20px 40px;
+    }
+
+    .movie-poster {
+        flex: 0 0 280px;
+        margin: 0;
     }
 
     .movie-info {
-        flex: 1 1 100%;
-        padding-left: 0;
+        flex: 1 1 600px;
+        padding-left: 10px;
     }
 
     .movie-title {
         font-size: 1.6rem;
-        text-align: center;
+        text-align: left;
     }
 
     .movie-metadata {
-        justify-content: center;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .metadata-divider {
+        display: inline;
+        color: #e50914;
+        margin: 0 5px;
+        font-weight: bold;
+    }
+
+    .movie-metadata span {
+        margin-bottom: 0;
     }
 
     .movie-description {
-        text-align: center;
+        text-align: left;
     }
 
     .detail-row {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .detail-label {
-        margin-bottom: 8px;
+        flex: 0 0 120px;
+        margin-bottom: 0;
     }
 
     .comment-header {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .comment-author,
     .comment-rating {
-        margin-bottom: 5px;
+        margin-bottom: 0;
     }
 
     .rating-selector {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-        .rating-selector label {
-            margin-bottom: 8px;
-        }
-
-    .edit-form-actions {
-        flex-direction: column;
-    }
-
-        .edit-form-actions button {
-            width: 100%;
-        }
-
-    .comment {
-        min-height: 130px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .movie-detail-container {
-        padding: 80px 15px 20px;
-    }
-
-    .movie-poster {
-        flex: 0 0 240px;
-    }
-
-    .movie-title {
-        font-size: 1.4rem;
-    }
-
-    .movie-metadata {
-        font-size: 0.9rem;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
 
-    .metadata-divider {
-        display: none;
+        .rating-selector label {
+            margin-right: 10px;
+            margin-bottom: 0;
+        }
+
+        .rating-selector select {
+            width: auto;
+            min-width: 100px;
+        }
+
+    .edit-form-actions {
+        flex-direction: row;
+        justify-content: flex-end;
     }
 
-    .movie-metadata span {
-        margin-bottom: 5px;
+        .edit-form-actions button {
+            width: auto;
+        }
+
+    .modal-actions {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+        .modal-actions button {
+            width: auto;
+        }
+
+    .add-comment-btn {
+        width: auto;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .movie-title {
+        font-size: 1.8rem;
+    }
+
+    .movie-poster {
+        flex: 0 0 330px;
+    }
+
+    .movie-metadata {
+        font-size: 1.1rem;
     }
 
     .movie-description {
-        font-size: 1.05rem;
+        max-width: 90%;
+        font-size: 1.15rem;
     }
 
     .movie-trailer h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .detail-label,
     .detail-row div:last-child {
-        font-size: 0.95rem;
+        font-size: 1.05rem;
     }
 
     .modal-content {
-        width: 95%;
-        padding: 20px;
+        max-width: 500px;
+        width: 90%;
     }
 
-    .modal-actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-        .modal-actions button {
-            width: 100%;
-        }
-
-    .comment {
-        min-height: 150px;
+    .comment-actions {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
     }
 }

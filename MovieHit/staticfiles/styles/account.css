@@ -352,7 +352,6 @@ input:checked + .toggle-slider {
         box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
     }
 
-/* Edit Profile Page Styles */
 .edit-profile-container {
     display: flex;
     justify-content: center;
@@ -388,6 +387,17 @@ input:checked + .toggle-slider {
     margin-top: 2rem;
 }
 
+@media (max-width: 992px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .account-content {
+        margin-left: 220px;
+        padding: 1.8rem;
+    }
+}
+
 @media (max-width: 768px) {
     .sidebar {
         width: 200px;
@@ -401,10 +411,30 @@ input:checked + .toggle-slider {
     .profile-card {
         flex-direction: column;
         align-items: center;
+        padding: 1.5rem;
     }
 
     .profile-image {
         margin-bottom: 1.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .security-card,
+    .preferences-card {
+        padding: 1.5rem;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .form-card {
+        padding: 1.5rem;
     }
 }
 
@@ -420,11 +450,17 @@ input:checked + .toggle-slider {
         top: 0;
         border-right: none;
         border-bottom: 1px solid #333;
+        margin-bottom: 1rem;
     }
 
     .sidebar-menu {
         display: flex;
+        flex-wrap: wrap;
         padding: 0;
+    }
+
+    .sidebar-header {
+        padding: 1rem;
     }
 
     .sidebar-item {
@@ -433,6 +469,8 @@ input:checked + .toggle-slider {
         padding: 1rem 0.5rem;
         border-left: none;
         border-bottom: 3px solid transparent;
+        min-width: 100px;
+        font-size: 0.9rem;
     }
 
         .sidebar-item.active {
@@ -446,7 +484,67 @@ input:checked + .toggle-slider {
     }
 
     .section-header h2 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+    }
+
+    .info-row {
+        flex-direction: column;
+    }
+
+    .info-label {
+        width: 100%;
+        margin-bottom: 0.3rem;
+    }
+
+    .buttons-row {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+        .buttons-row .btn-primary,
+        .buttons-row .btn-secondary {
+            width: 100%;
+        }
+}
+
+@media (max-width: 400px) {
+    .sidebar-item {
+        padding: 0.8rem 0.3rem;
+        font-size: 0.8rem;
+    }
+
+    .security-card,
+    .preferences-card {
+        padding: 1.2rem;
+    }
+
+    .profile-card {
+        padding: 1.2rem;
+    }
+
+    .avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+
+    .form-card {
+        padding: 1.2rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .sidebar-header h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .sidebar-item {
+        min-width: 80px;
+        font-size: 0.75rem;
     }
 }
 
@@ -466,3 +564,41 @@ input:checked + .toggle-slider {
     ::-webkit-scrollbar-thumb:hover {
         background: #444;
     }
+
+@media (hover: none) and (pointer: coarse) {
+    .sidebar-item:active {
+        background-color: rgba(229, 9, 20, 0.08);
+    }
+
+    .btn-action:active,
+    .btn-primary:active,
+    .btn-secondary:active {
+        transform: scale(0.98);
+    }
+
+    .btn-action.logout {
+        padding: 0.95rem;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .sidebar {
+        height: auto;
+        position: relative;
+        width: 100%;
+        top: 0;
+    }
+
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .account-content {
+        margin-left: 0;
+    }
+
+    .account-page {
+        flex-direction: column;
+    }
+}

@@ -43,9 +43,8 @@
     <main class="page">
         {% for banner in banners %}
         {% if banner.active %}
-        <div class="hero-banner">
+        <div class="hero-banner" style="background-image: url('{{ banner.banner_img.url }}')">
             <div class="banner-overlay"></div>
-            <img src="{{ banner.banner_img.url }}" alt="Banner Image" class="banner-image">
             <div class="banner-content">
                 <h1 class="banner-title">MovieHit</h1>
                 <p class="banner-tagline">where every Movie hits</p>

@@ -3,15 +3,199 @@
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease, text-decoration 0.3s ease;
+    display: inline-block;
+    padding: 0.2rem 0;
 }
 
-.styled-link:hover {
-    color: #f40612;
-    text-decoration: underline;
-}
+    .styled-link:hover {
+        color: #f40612;
+        text-decoration: underline;
+    }
+
+    .styled-link:active {
+        transform: scale(0.98);
+    }
 
 .form-group p {
     text-align: center;
     margin: 1.5rem 0;
     color: #ccc;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.update-email-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(40, 40, 40, 0.6);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.update-email-form {
+    width: 100%;
+    max-width: 100%;
+}
+
+.update-email-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+    .update-email-header h1 {
+        color: #e50914;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+    .form-control:focus {
+        outline: none;
+        border-color: #e50914;
+        box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.2);
+    }
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #aaa;
+    font-size: 0.95rem;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .btn-submit:hover {
+        background-color: #f40612;
+    }
+
+    .btn-submit:active {
+        transform: scale(0.98);
+    }
+
+.message {
+    padding: 0.8rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.success-message {
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.error-message {
+    background-color: rgba(229, 9, 20, 0.1);
+    border: 1px solid rgba(229, 9, 20, 0.2);
+    color: #e50914;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #aaa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+    .back-link:hover {
+        color: #e50914;
+    }
+
+@media (max-width: 768px) {
+    .update-email-container {
+        padding: 1.5rem;
+    }
+
+    .update-email-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-group p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .update-email-container {
+        padding: 1.2rem;
+        border-radius: 8px;
+    }
+
+    .update-email-header h1 {
+        font-size: 1.4rem;
+    }
+
+    .form-control {
+        padding: 0.7rem;
+    }
+
+    .btn-submit {
+        padding: 0.75rem;
+    }
+
+    .form-group p {
+        font-size: 0.9rem;
+        margin: 1.2rem 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .update-email-container {
+        padding: 1rem;
+    }
+
+    .update-email-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    .form-group p {
+        font-size: 0.85rem;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .styled-link:active {
+        color: #f40612;
+    }
+
+    .btn-submit {
+        min-height: 44px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .styled-link,
+    .btn-submit {
+        transition: none;
+    }
 }

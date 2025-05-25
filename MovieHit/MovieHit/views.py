@@ -328,22 +328,22 @@ def signin(request):
             username = request.POST.get('username') # Get the username from POST data
             password = request.POST.get('password') # Get the password from POST data
             confirm_password = request.POST.get('confirm_password') # Get the confirm password from POST data
-            fullname = request.POST.get('fullname', '') # Get the full name from POST data, default to empty string if not provided
-            
+            first_name = request.POST.get('first_name', '') # Get the first name directly from POST data
+            last_name = request.POST.get('last_name', '') # Get the last name directly from POST data
+            email = request.POST.get('email')  # Get the email from POST data
+    
             if password != confirm_password:
                 error = "Passwords do not match." # Set error if passwords do not match
             elif User.objects.filter(username=username).exists():
                 error = "Username already exists." # Set error if the username already exists
             else:
-                name_parts = fullname.split(' ', 1) # Split the full name into first and last name, allowing for a single space
-                first_name = name_parts[0] # First part is the first name
-                last_name = name_parts[1] if len(name_parts) > 1 else '' # Second part is the last name, if it exists, otherwise set to empty string
-                
+                # No need to split fullname since we're getting first_name and last_name directly
                 user = User.objects.create_user(
                     username=username, # Create a new user with the provided username
                     password=password, # Set the password for the new user
                     first_name=first_name, # Set the first name for the new user
-                    last_name=last_name # Set the last name for the new user (if provided, otherwise it will be empty
+                    last_name=last_name, # Set the last name for the new user
+                    email=email # Set the email for the new user
                 )
                 
                 login(request, user) # Log in the user after successful registration
@@ -357,7 +357,7 @@ def signin(request):
                 login(request, user)
                 return redirect('index') # Redirect to the index page after successful login
             else:
-                error = "Invalid credentials. Please try again."
+                error = "Invalid credentials. Please try again." # Set error if authentication fails
     
     return render(request, 'signin.html', {'error': error}) # Render the sign-in template with the error context if any
 

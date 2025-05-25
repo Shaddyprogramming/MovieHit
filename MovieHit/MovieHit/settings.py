@@ -17,7 +17,8 @@ SECRET_KEY = '2ca909a1-e73e-4f92-b601-30c45abfc0d5' # Secret key for the Django 
 
 DEBUG = False # Set to False for production, True for development. In production, ensure DEBUG is set to False for security reasons.
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # List of allowed hosts for the Django application. In production, add your domain name here.
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','www.moviehit.online','https://moviehit.online','moviehit.online']  # List of allowed hosts for the Django application. In production, add your domain name here.
+# Recent version allow people to access the site whenever
 
 LANGUAGE_CODE = 'en-us' # Language code for the application, set to English (United States)
 TIME_ZONE = 'Europe/Bucharest'  # Time zone for the application, set to Bucharest time zone
