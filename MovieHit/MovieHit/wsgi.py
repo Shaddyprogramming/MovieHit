@@ -16,14 +16,14 @@ For more information, visit
 https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
 """
 
-import os
-from django.core.wsgi import get_wsgi_application
+import os # Importing os module for interacting with the operating system
+from django.core.wsgi import get_wsgi_application # Importing get_wsgi_application from Django's core WSGI module to create the WSGI application
 
 os.environ.setdefault(
-    'DJANGO_SETTINGS_MODULE',
-    'MovieHit.settings')
+    'DJANGO_SETTINGS_MODULE', # Setting the default settings module for the Django application
+    'MovieHit.settings') # 'MovieHit.settings' is the settings module for the MovieHit project
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
-application = get_wsgi_application()
+application = get_wsgi_application() # Creating the WSGI application object that can be used by WSGI servers

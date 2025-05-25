@@ -53,6 +53,7 @@
     <Compile Include="MovieHit\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="description\bibliografie.md" />
     <Content Include="description\cerinte_proiect_22-E1.md" />
     <Content Include="fill.bat">
       <SubType>Code</SubType>

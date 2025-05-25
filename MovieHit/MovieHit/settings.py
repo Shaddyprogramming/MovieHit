@@ -9,68 +9,58 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
-from pathlib import Path
+from pathlib import Path # Importing Path from pathlib for handling file paths
 
-# Base directory of the project
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent # Base directory of the project, two levels up from this settings file
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2ca909a1-e73e-4f92-b601-30c45abfc0d5'
+SECRET_KEY = '2ca909a1-e73e-4f92-b601-30c45abfc0d5' # Secret key for the Django project, used for cryptographic signing. Change this in production!
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # Set to True during development, False in production
+DEBUG = False # Set to False for production, True for development. In production, ensure DEBUG is set to False for security reasons.
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # Add your production domain here
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # List of allowed hosts for the Django application. In production, add your domain name here.
 
-# Internationalization
-LANGUAGE_CODE = 'en-us'  # Romanian language and locale
-TIME_ZONE = 'Europe/Bucharest'  # Timezone for Romania
-USE_I18N = True  # Enable Django's internationalization system
-USE_L10N = True  # Enable localized formatting of data
-USE_TZ = True  # Enable timezone-aware datetimes
+LANGUAGE_CODE = 'en-us' # Language code for the application, set to English (United States)
+TIME_ZONE = 'Europe/Bucharest'  # Time zone for the application, set to Bucharest time zone
+USE_I18N = True # Enable internationalization support
+USE_L10N = True # Enable localized formatting of data
+USE_TZ = True # Enable timezone support, allowing Django to handle time zones correctly
 
-# Default charset
-DEFAULT_CHARSET = 'utf-8'  # Ensure UTF-8 encoding for all text-based operations
+DEFAULT_CHARSET = 'utf-8' # Default character set for the application, set to UTF-8 for proper encoding of text
 
-
-# Application references
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'MovieHit',
-    'simple_history',
+INSTALLED_APPS = [ # List of installed applications in the Django project
+    'django.contrib.admin', # Admin interface for managing the application
+    'django.contrib.auth', # Authentication framework for user management
+    'django.contrib.contenttypes', # Content types framework for handling generic relations
+    'django.contrib.sessions', # Session framework for managing user sessions
+    'django.contrib.messages', # Messaging framework for displaying messages to users
+    'django.contrib.staticfiles', # Static files framework for serving static files during development
+    'MovieHit', # Main application for the MovieHit project
+    'simple_history', # Simple History app for tracking changes in models
 ]
 
-# Middleware framework
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+MIDDLEWARE = [ # List of middleware components that process requests and responses
+    'django.middleware.security.SecurityMiddleware', # Security middleware for handling security-related tasks
+    'django.middleware.common.CommonMiddleware', # Common middleware for handling common tasks like URL normalization
+    'django.middleware.csrf.CsrfViewMiddleware', # CSRF protection middleware to prevent cross-site request forgery attacks
+    'django.contrib.sessions.middleware.SessionMiddleware', # Session middleware for managing user sessions
+    'django.contrib.auth.middleware.AuthenticationMiddleware', # Authentication middleware for user authentication
+    'django.contrib.messages.middleware.MessageMiddleware', # Messaging middleware for displaying messages to users
+    'django.middleware.clickjacking.XFrameOptionsMiddleware', # Middleware to prevent clickjacking attacks
 ]
 
-# URL configuration
-ROOT_URLCONF = 'MovieHit.urls'
+ROOT_URLCONF = 'MovieHit.urls' # URL configuration for the MovieHit project, pointing to the urls.py file in the MovieHit directory
 
-# Template configuration
-TEMPLATES = [
+TEMPLATES = [ # Template settings for rendering HTML templates
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Ensure templates directory exists
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates', # Template backend for rendering HTML templates
+        'DIRS': [BASE_DIR / 'templates'], # Directory for custom templates
+        'APP_DIRS': True, # Enable automatic loading of templates from installed applications
+        'OPTIONS': { # Options for the template engine
+            'context_processors': [ # List of context processors that add variables to the template context
+                'django.template.context_processors.debug', # Debug context processor for development
+                'django.template.context_processors.request', # Request context processor for accessing request data in templates
+                'django.contrib.auth.context_processors.auth', # Authentication context processor for user authentication data
+                'django.contrib.messages.context_processors.messages', # Messages context processor for displaying messages to users
             ],
         },
     },
@@ -129,10 +119,49 @@ if not DEBUG:
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')  # Add WhiteNoise for static file handling
 
  
+# Replace the current email configuration with this code
+
+# Email configuration
+# Replace the current email configuration with this code
+
+# Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'moviehit.management@gmail.com'
-EMAIL_HOST_PASSWORD = 'gocw auek pmxe vwlh'
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# Default values (will be used if credentials file is not found)
+EMAIL_HOST_USER = None
+EMAIL_HOST_PASSWORD = None
+
+# Try to read credentials from credentials.txt file
+credentials_file = BASE_DIR / 'credentials.txt'
+try:
+    if credentials_file.exists():
+        with open(credentials_file, 'r') as file:
+            credentials = file.read().strip().split('\n')
+            if len(credentials) >= 2:
+                EMAIL_HOST_USER = credentials[0].strip()
+                EMAIL_HOST_PASSWORD = credentials[1].strip()
+                
+                # Validate that credentials are not empty
+                if not EMAIL_HOST_USER or not EMAIL_HOST_PASSWORD:
+                    print("Warning: Email credentials are empty in credentials.txt")
+                    EMAIL_HOST_USER = None
+                    EMAIL_HOST_PASSWORD = None
+            else:
+                print("Warning: Insufficient data in credentials.txt file")
+    else:
+        print(f"Warning: Credentials file not found at {credentials_file}")
+except Exception as e:
+    print(f"Warning: Could not read email credentials: {str(e)}")
+    # Keep the default None values
+
+# Set DEFAULT_FROM_EMAIL only if we have valid credentials
+if EMAIL_HOST_USER:
+    DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+else:
+    # If credentials are missing, configure a dummy backend that won't send emails
+    EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+    print("Email functionality disabled: Missing valid credentials")
+

@@ -12,7 +12,6 @@ body {
     padding: 0;
 }
 
-/* Hero Banner Section */
 .hero-banner {
     position: relative;
     width: 100%;
@@ -66,7 +65,6 @@ body {
     color: #e50914;
 }
 
-/* Section Heading */
 .section-heading {
     margin: 2rem 8%;
 }
@@ -179,7 +177,6 @@ body {
         margin-right: 5px;
     }
 
-/* Footer */
 .footer {
     background-color: #1a1a1a;
     padding: 1.5rem 0;
@@ -192,7 +189,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Movie Links */
 .movie-link {
     display: block;
     text-decoration: none;
@@ -201,7 +197,6 @@ body {
     height: 100%;
 }
 
-/* Movie Details Page */
 .movie-detail-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -209,7 +204,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 60px;
-    padding-top: 100px; /* Added to provide space below the navbar */
+    padding-top: 100px;
 }
 
 .movie-poster {
@@ -226,7 +221,6 @@ body {
     flex: 1 1 600px;
 }
 
-    /* Adjusted movie title size for the details page */
     .movie-info .movie-title {
         font-size: 1.8rem;
         margin-bottom: 15px;
@@ -315,7 +309,6 @@ body {
         border-radius: 8px;
     }
 
-/* Media Queries */
 @media screen and (max-width: 1024px) {
     .banner-content {
         bottom: 60px;

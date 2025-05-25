@@ -16,11 +16,14 @@
         <nav>
             <div class="nav-left">
                 <a href="{% url 'index' %}" class="nav-link logo-text">MovieHit</a>
-                <a href="#" class="nav-link">Top Rated</a>
+                <a href="{% url 'index' %}?sort=rating" class="nav-link {% if sort == 'rating' %}active{% endif %}">Top Rated</a>
             </div>
             <div class="search-bar">
                 <form method="GET" action="{% url 'index' %}">
                     <input type="text" name="q" placeholder="Search for a movie..." value="{{ query }}" class="search-input">
+                    {% if sort == 'rating' %}
+                    <input type="hidden" name="sort" value="rating">
+                    {% endif %}
                     <button type="submit" class="search-button">Search</button>
                 </form>
             </div>
@@ -52,7 +55,7 @@
         {% endfor %}
 
         <div class="section-heading">
-            <h2>Latest Additions</h2>
+            <h2>{% if sort == 'rating' %}Top Rated Movies{% else %}Latest Additions{% endif %}</h2>
         </div>
 
         <div class="movie-grid">

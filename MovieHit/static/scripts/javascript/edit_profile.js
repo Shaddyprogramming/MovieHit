@@ -1,16 +1,10 @@
-/**
- * MovieHit Edit Profile JavaScript
- * Handles form validation and submission for profile editing
- */
 document.addEventListener('DOMContentLoaded', function () {
     initializeFormValidation();
     handleFormSubmission();
     setupInputEffects();
 });
 
-/**
- * Set up form field validation
- */
+
 function initializeFormValidation() {
     const usernameInput = document.getElementById('username');
     const firstNameInput = document.getElementById('first_name');
@@ -108,7 +102,6 @@ function validateNotEmpty(input, fieldName) {
 function updateCharacterCounter(input, fieldName, maxLength) {
     let counter = input.parentElement.querySelector('.character-counter');
 
-    // Create counter if it doesn't exist
     if (!counter) {
         counter = document.createElement('small');
         counter.className = 'character-counter';
@@ -118,7 +111,6 @@ function updateCharacterCounter(input, fieldName, maxLength) {
     const currentLength = input.value.length;
     counter.textContent = `${currentLength}/${maxLength} characters`;
 
-    // Visual warning if over limit
     if (currentLength > maxLength) {
         counter.classList.add('over-limit');
     } else {
@@ -126,9 +118,7 @@ function updateCharacterCounter(input, fieldName, maxLength) {
     }
 }
 
-/**
- * Handle form submission with validation
- */
+
 function handleFormSubmission() {
     const form = document.querySelector('form');
 
@@ -140,7 +130,6 @@ function handleFormSubmission() {
 
             let isValid = true;
 
-            // Validate all fields
             if (usernameInput && !validateUsername(usernameInput)) {
                 isValid = false;
             }
@@ -153,11 +142,9 @@ function handleFormSubmission() {
                 isValid = false;
             }
 
-            // Prevent submission if validation fails
             if (!isValid) {
                 e.preventDefault();
 
-                // Show error message
                 let messageBox = document.querySelector('.message-box');
                 if (!messageBox) {
                     messageBox = document.createElement('div');
@@ -169,10 +156,8 @@ function handleFormSubmission() {
                 messageBox.textContent = 'Please correct the highlighted fields';
                 messageBox.className = 'message-box error';
 
-                // Scroll to error message
                 messageBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
-                // Add loading state to button
                 const submitBtn = form.querySelector('button[type="submit"]');
                 if (submitBtn) {
                     submitBtn.disabled = true;
@@ -183,14 +168,10 @@ function handleFormSubmission() {
     }
 }
 
-/**
- * Set up visual effects for form inputs
- */
 function setupInputEffects() {
     const inputs = document.querySelectorAll('.form-control');
 
     inputs.forEach(input => {
-        // Add focus styles
         input.addEventListener('focus', function () {
             this.parentElement.classList.add('input-focused');
         });
@@ -199,7 +180,6 @@ function setupInputEffects() {
             this.parentElement.classList.remove('input-focused');
         });
 
-        // Highlight row on focus
         input.addEventListener('focus', function () {
             const row = this.closest('.form-row');
             if (row) row.classList.add('row-active');
