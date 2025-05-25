@@ -161,6 +161,7 @@
     <Content Include="migrate.bat">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="requirements.txt" />
     <Content Include="static\media\images\icons\Logo.ico" />
     <Content Include="static\media\images\icons\Logo.png" />
     <Content Include="static\media\images\movies\default.png" />

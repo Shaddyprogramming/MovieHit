@@ -1,6 +1,7 @@
 asgiref==3.8.1
 Django==5.2
 django-simple-history==3.8.0
+pillow==11.2.1
 pytz==2025.2
 sqlparse==0.5.3
 tzdata==2025.2
