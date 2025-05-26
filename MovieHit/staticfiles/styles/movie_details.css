@@ -135,9 +135,15 @@ body {
     font-size: 0.95rem;
 }
 
+.trailer-row {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
 .movie-trailer {
     width: 100%;
-    margin-top: 30px;
+    margin: 0 auto;
 }
 
     .movie-trailer h2 {
@@ -527,6 +533,10 @@ body {
     .modal-content {
         padding: 25px;
     }
+
+    .trailer-row {
+        padding: 20px;
+    }
 }
 
 @media screen and (min-width: 769px) {
@@ -579,6 +589,11 @@ body {
     .detail-label {
         flex: 0 0 120px;
         margin-bottom: 0;
+    }
+
+    .trailer-row {
+        max-width: 1200px;
+        padding: 20px 30px;
     }
 
     .comment-header {
@@ -647,9 +662,17 @@ body {
         font-size: 1.15rem;
     }
 
-    .movie-trailer h2 {
-        font-size: 1.8rem;
+    .trailer-row {
+        max-width: 1200px;
     }
+
+    .movie-trailer {
+        max-width: 900px;
+    }
+
+        .movie-trailer h2 {
+            font-size: 1.8rem;
+        }
 
     .detail-label,
     .detail-row div:last-child {

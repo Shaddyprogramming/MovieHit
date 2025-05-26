@@ -15,17 +15,19 @@
 <body>
     <header class="panel">
         <nav>
-            <div class="nav-left">
-                <a href="{% url 'index' %}" class="nav-link logo-text">MovieHit</a>
-                <a href="#" class="nav-link">Top Rated</a>
+            <div class="nav-brand">
+                <a href="{% url 'index' %}" class="logo-text">MovieHit</a>
+                <a href="{% url 'index' %}?sort=rating" class="nav-link">Top Rated</a>
             </div>
-            <div class="search-bar">
-                <form method="GET" action="{% url 'index' %}">
-                    <input type="text" name="q" placeholder="Search for a movie..." class="search-input">
-                    <button type="submit" class="search-button">Search</button>
-                </form>
+            <div class="search-container">
+                <div class="search-bar">
+                    <form method="GET" action="{% url 'index' %}">
+                        <input type="text" name="q" placeholder="Search for a movie..." class="search-input">
+                        <button type="submit" class="search-button">Search</button>
+                    </form>
+                </div>
             </div>
-            <div class="nav-right">
+            <div class="nav-actions">
                 {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'account' %}" style="display: inline;">
                     {% csrf_token %}
@@ -83,15 +85,17 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            {% if movie.trailer != "No trailer" %}
+        {% if movie.trailer != "No trailer" %}
+        <div class="trailer-row">
             <div class="movie-trailer">
                 <h2>Trailer</h2>
                 <div class="trailer-container" id="trailer-container" data-trailer-url="{{ movie.trailer }}">
                 </div>
             </div>
-            {% endif %}
         </div>
+        {% endif %}
 
         <div class="comments-section">
             <h2>Comments</h2>

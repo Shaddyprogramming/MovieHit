@@ -13,17 +13,19 @@
 <body>
     <header class="panel">
         <nav>
-            <div class="nav-left">
-                <a href="{% url 'index' %}" class="nav-link logo-text">MovieHit</a>
-                <a href="#" class="nav-link">Top Rated</a>
+            <div class="nav-brand">
+                <a href="{% url 'index' %}" class="logo-text">MovieHit</a>
+                <a href="{% url 'index' %}?sort=rating" class="nav-link">Top Rated</a>
             </div>
-            <div class="search-bar">
-                <form method="GET" action="{% url 'index' %}">
-                    <input type="text" name="q" placeholder="Search for a movie..." class="search-input">
-                    <button type="submit" class="search-button">Search</button>
-                </form>
+            <div class="search-container">
+                <div class="search-bar">
+                    <form method="GET" action="{% url 'index' %}">
+                        <input type="text" name="q" placeholder="Search for a movie..." class="search-input">
+                        <button type="submit" class="search-button">Search</button>
+                    </form>
+                </div>
             </div>
-            <div class="nav-right">
+            <div class="nav-actions">
                 {% if user.is_authenticated %}
                 <span class="username-display">Hi, {{ user.username }}!</span>
                 {% else %}
@@ -130,8 +132,6 @@
                 </div>
             </div>
 
-
-            <!-- Preferences Section -->
             <div id="preferences" class="content-section">
                 <div class="section-header">
                     <h2>Viewing Preferences</h2>

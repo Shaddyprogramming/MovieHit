@@ -92,12 +92,8 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    }
 
 .image-box {
     position: relative;
@@ -125,10 +121,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-}
-
-.image-box:hover .content {
-    opacity: 1;
+    pointer-events: none;
 }
 
 .content-inner {
@@ -308,6 +301,42 @@ body {
         height: 100%;
         border-radius: 8px;
     }
+
+/* Card hover effects only for desktop */
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .image-box:hover .content {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Touch device behavior */
+@media (hover: none) and (pointer: coarse) {
+    .card:active {
+        transform: scale(0.98);
+    }
+
+    .image-box {
+        touch-action: auto;
+    }
+
+    /* Allow scrolling through the page */
+    body, html {
+        touch-action: auto;
+        overflow-y: auto;
+    }
+
+    .card.touched .content {
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 5;
+    }
+}
 
 @media screen and (max-width: 1024px) {
     .banner-content {
@@ -490,19 +519,5 @@ body {
 
     .movie-detail-container {
         padding: 60px 10px 20px;
-    }
-}
-
-@media (hover: none) and (pointer: coarse) {
-    .content {
-        opacity: 0.05;
-    }
-
-    .card:active {
-        transform: scale(0.98);
-    }
-
-    .image-box:active .content {
-        opacity: 1;
     }
 }

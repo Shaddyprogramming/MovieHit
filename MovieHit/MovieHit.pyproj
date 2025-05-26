@@ -169,6 +169,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="static\scripts\javascript\edit_profile.js" />
+    <Content Include="static\scripts\javascript\index.js" />
     <Content Include="static\scripts\javascript\movie_details.js" />
     <Content Include="static\scripts\javascript\signin.js">
       <SubType>Code</SubType>

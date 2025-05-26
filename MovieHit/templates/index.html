@@ -10,24 +10,27 @@
     <link rel="stylesheet" href="{% static 'styles/content.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'media/images/icons/Logo.ico' %}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="{% static 'scripts/javascript/index.js' %}" defer></script>
 </head>
 <body>
     <header class="panel">
         <nav>
-            <div class="nav-left">
-                <a href="{% url 'index' %}" class="nav-link logo-text">MovieHit</a>
+            <div class="nav-brand">
+                <a href="{% url 'index' %}" class="logo-text">MovieHit</a>
                 <a href="{% url 'index' %}?sort=rating" class="nav-link {% if sort == 'rating' %}active{% endif %}">Top Rated</a>
             </div>
-            <div class="search-bar">
-                <form method="GET" action="{% url 'index' %}">
-                    <input type="text" name="q" placeholder="Search for a movie..." value="{{ query }}" class="search-input">
-                    {% if sort == 'rating' %}
-                    <input type="hidden" name="sort" value="rating">
-                    {% endif %}
-                    <button type="submit" class="search-button">Search</button>
-                </form>
+            <div class="search-container">
+                <div class="search-bar">
+                    <form method="GET" action="{% url 'index' %}">
+                        <input type="text" name="q" placeholder="Search for a movie..." value="{{ query }}" class="search-input">
+                        {% if sort == 'rating' %}
+                        <input type="hidden" name="sort" value="rating">
+                        {% endif %}
+                        <button type="submit" class="search-button">Search</button>
+                    </form>
+                </div>
             </div>
-            <div class="nav-right">
+            <div class="nav-actions">
                 {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'account' %}" style="display: inline;">
                     {% csrf_token %}
